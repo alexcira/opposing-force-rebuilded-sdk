@@ -317,6 +317,9 @@
     <ClCompile Include="zombie_soldier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scientist_cleansuit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h">
