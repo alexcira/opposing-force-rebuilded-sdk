@@ -1563,7 +1563,7 @@ CMenuPanel* TeamFortressViewport::CreateTextWindow( int iTextToShow )
 	if ( iTextToShow == SHOW_MOTD )
 	{
 		if (!m_szServerName || !m_szServerName[0])
-			strcpy( cTitle, "Half-Life" );
+			strcpy( cTitle, "Opposing Force" );
 		else
 			strncpy( cTitle, m_szServerName, MAX_TITLE_LENGTH );
 		cTitle[MAX_TITLE_LENGTH-1] = 0;

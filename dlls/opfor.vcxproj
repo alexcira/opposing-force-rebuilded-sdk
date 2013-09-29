@@ -48,14 +48,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Releasehl\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Releasehl\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release_opfor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release_opfor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">.\Profilehl\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">.\Profilehl\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">.\Profile_opfor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">.\Profile_opfor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\debughl\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\debughl\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\debug_opfor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\debug_opfor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,7 +69,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\Releasehl/hl.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Release_opfor/opfor.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -81,13 +81,13 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>.\Releasehl/hl.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\Releasehl/</AssemblerListingLocation>
-      <ObjectFileName>.\Releasehl/</ObjectFileName>
-      <ProgramDataBaseFileName>.\Releasehl/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>.\Release_opfor/opfor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release_opfor/</AssemblerListingLocation>
+      <ObjectFileName>.\Release_opfor/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release_opfor/</ProgramDataBaseFileName>
       <BrowseInformation>
       </BrowseInformation>
-      <BrowseInformationFile>.\Releasehl/</BrowseInformationFile>
+      <BrowseInformationFile>.\Release_opfor/</BrowseInformationFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -97,23 +97,23 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\Releasehl/hl.dll</OutputFile>
+      <OutputFile>.\Release_opfor/opfor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\hl.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\opfor.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\Releasehl/hl.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\Release_opfor/opfor.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>.\Releasehl/hl.map</MapFileName>
+      <MapFileName>.\Release_opfor/opfor.map</MapFileName>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>.\Releasehl/hl.lib</ImportLibrary>
+      <ImportLibrary>.\Release_opfor/opfor.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Releasehl/hl.bsc</OutputFile>
+      <OutputFile>.\Release_opfor/opfor.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
@@ -127,7 +127,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\Profilehl/hl.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Profile_opfor/opfor.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -139,10 +139,10 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>.\Profilehl/hl.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\Profilehl/</AssemblerListingLocation>
-      <ObjectFileName>.\Profilehl/</ObjectFileName>
-      <ProgramDataBaseFileName>.\Profilehl/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>.\Profile_opfor/opfor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Profile_opfor/</AssemblerListingLocation>
+      <ObjectFileName>.\Profile_opfor/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Profile_opfor/</ProgramDataBaseFileName>
       <BrowseInformation>
       </BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
@@ -154,20 +154,20 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\Profilehl/hl.dll</OutputFile>
+      <OutputFile>.\Profile_opfor/opfor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\hl.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\opfor.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>.\Profilehl/hl.lib</ImportLibrary>
+      <ImportLibrary>.\Profile_opfor/opfor.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Profilehl/hl.bsc</OutputFile>
+      <OutputFile>.\Profile_opfor/opfor.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -181,7 +181,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\debughl/hl.tlb</TypeLibraryName>
+      <TypeLibraryName>.\debug_opfor/opfor.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -191,10 +191,10 @@
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;QUIVER;VOXEL;QUAKE2;VALVE_DLL;CLIENT_WEAPONS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>.\debughl/hl.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\debughl/</AssemblerListingLocation>
-      <ObjectFileName>.\debughl/</ObjectFileName>
-      <ProgramDataBaseFileName>.\debughl/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>.\debug_opfor/opfor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\debug_opfor/</AssemblerListingLocation>
+      <ObjectFileName>.\debug_opfor/</ObjectFileName>
+      <ProgramDataBaseFileName>.\debug_opfor/</ProgramDataBaseFileName>
       <BrowseInformation>
       </BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
@@ -207,21 +207,21 @@
       <AdditionalIncludeDirectories>..\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\debughl/hl.dll</OutputFile>
+      <OutputFile>.\debug_opfor/opfor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\hl.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\opfor.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\debughl/hl.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\debug_opfor/opfor.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>.\Debug\hl.lib</ImportLibrary>
+      <ImportLibrary>.\Debug\opfor.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\debughl/hl.bsc</OutputFile>
+      <OutputFile>.\debug_opfor/opfor.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -1033,6 +1033,7 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="zombie_soldier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h" />

@@ -244,8 +244,6 @@ cvar_t	sk_snark_dmg_pop1 = {"sk_snark_dmg_pop1","0"};
 cvar_t	sk_snark_dmg_pop2 = {"sk_snark_dmg_pop2","0"};
 cvar_t	sk_snark_dmg_pop3 = {"sk_snark_dmg_pop3","0"};
 
-
-
 // Zombie
 cvar_t	sk_zombie_health1 = {"sk_zombie_health1","0"};
 cvar_t	sk_zombie_health2 = {"sk_zombie_health2","0"};
@@ -259,6 +257,18 @@ cvar_t	sk_zombie_dmg_both_slash1 = {"sk_zombie_dmg_both_slash1","0"};
 cvar_t	sk_zombie_dmg_both_slash2 = {"sk_zombie_dmg_both_slash2","0"};
 cvar_t	sk_zombie_dmg_both_slash3 = {"sk_zombie_dmg_both_slash3","0"};
 
+// Zombie soldier
+cvar_t	sk_zombie_soldier_health1 = {"sk_zombie_soldier_health1","0"};
+cvar_t	sk_zombie_soldier_health2 = {"sk_zombie_soldier_health2","0"};
+cvar_t	sk_zombie_soldier_health3 = {"sk_zombie_soldier_health3","0"};
+
+cvar_t	sk_zombie_soldier_dmg_one_slash1 = {"sk_zombie_soldier_dmg_one_slash1","0"};
+cvar_t	sk_zombie_soldier_dmg_one_slash2 = {"sk_zombie_soldier_dmg_one_slash2","0"};
+cvar_t	sk_zombie_soldier_dmg_one_slash3 = {"sk_zombie_soldier_dmg_one_slash3","0"};
+
+cvar_t	sk_zombie_soldier_dmg_both_slash1 = {"sk_zombie_soldier_dmg_both_slash1","0"};
+cvar_t	sk_zombie_soldier_dmg_both_slash2 = {"sk_zombie_soldier_dmg_both_slash2","0"};
+cvar_t	sk_zombie_soldier_dmg_both_slash3 = {"sk_zombie_soldier_dmg_both_slash3","0"};
 
 //Turret
 cvar_t	sk_turret_health1 = {"sk_turret_health1","0"};
@@ -680,8 +690,6 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_snark_dmg_pop2 );// {"sk_snark_dmg_pop2","0"};
 	CVAR_REGISTER ( &sk_snark_dmg_pop3 );// {"sk_snark_dmg_pop3","0"};
 
-
-
 	// Zombie
 	CVAR_REGISTER ( &sk_zombie_health1 );// {"sk_zombie_health1","0"};
 	CVAR_REGISTER ( &sk_zombie_health2 );// {"sk_zombie_health3","0"};
@@ -695,6 +703,18 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_zombie_dmg_both_slash2 );// {"sk_zombie_dmg_both_slash2","0"};
 	CVAR_REGISTER ( &sk_zombie_dmg_both_slash3 );// {"sk_zombie_dmg_both_slash3","0"};
 
+	// Zombie Soldier
+	CVAR_REGISTER ( &sk_zombie_soldier_health1 );// {"sk_zombie_health1","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_health2 );// {"sk_zombie_health3","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_health3 );// {"sk_zombie_health3","0"};
+
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash1 );// {"sk_zombie_dmg_one_slash1","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash2 );// {"sk_zombie_dmg_one_slash2","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash3 );// {"sk_zombie_dmg_one_slash3","0"};
+
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash1 );// {"sk_zombie_dmg_both_slash1","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash2 );// {"sk_zombie_dmg_both_slash2","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash3 );// {"sk_zombie_dmg_both_slash3","0"};
 
 	//Turret
 	CVAR_REGISTER ( &sk_turret_health1 );// {"sk_turret_health1","0"};
@@ -883,5 +903,6 @@ void GameDLLInit( void )
 // END REGISTER CVARS FOR SKILL LEVEL STUFF
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
+	SERVER_COMMAND( "exec skillopfor.cfg\n" );
 }
 
