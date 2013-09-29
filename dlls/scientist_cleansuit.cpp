@@ -1028,7 +1028,7 @@ void CDeadCleansuitScientist :: Spawn( )
 
 	pev->sequence = LookupSequence( m_szPoses[m_iPose] );
 	if (pev->sequence == -1)
-		ALERT ( at_console, "Dead scientist with bad pose\n" );
+		ALERT ( at_console, "Dead cleansuit scientist with bad pose\n" );
 
 	//	pev->skin += 2; // use bloody skin -- UNDONE: Turn this back on when we have a bloody skin again!
 	MonsterInitDead();
