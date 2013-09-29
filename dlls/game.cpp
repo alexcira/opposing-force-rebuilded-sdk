@@ -230,6 +230,10 @@ cvar_t	sk_scientist_health1 = {"sk_scientist_health1","0"};
 cvar_t	sk_scientist_health2 = {"sk_scientist_health2","0"};
 cvar_t	sk_scientist_health3 = {"sk_scientist_health3","0"};
 
+// Cleansuit Scientist
+cvar_t	sk_cleansuit_scientist_health1 = {"sk_cleansuit_scientist_health1","0"};
+cvar_t	sk_cleansuit_scientist_health2 = {"sk_cleansuit_scientist_health2","0"};
+cvar_t	sk_cleansuit_scientist_health3 = {"sk_cleansuit_scientist_health3","0"};
 
 // Snark
 cvar_t	sk_snark_health1 = {"sk_snark_health1","0"};
@@ -676,6 +680,10 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_scientist_health2 );// {"sk_scientist_health2","0"};
 	CVAR_REGISTER ( &sk_scientist_health3 );// {"sk_scientist_health3","0"};
 
+	// Cleansuit Scientist
+	CVAR_REGISTER ( &sk_cleansuit_scientist_health1 );// {"sk_cleansuit_scientist_health1","0"};
+	CVAR_REGISTER ( &sk_cleansuit_scientist_health2 );// {"sk_cleansuit_scientist_health2","0"};
+	CVAR_REGISTER ( &sk_cleansuit_scientist_health3 );// {"sk_cleansuit_scientist_health3","0"};
 
 	// Snark
 	CVAR_REGISTER ( &sk_snark_health1 );// {"sk_snark_health1","0"};
