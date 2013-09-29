@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -89,7 +89,7 @@ public:
 
 	int CountAmmo( int iId );
 
-	HSPRITE* GetAmmoPicFromWeapon( int iAmmoId, wrect_t& rect );
+	SpriteHandle_t* GetAmmoPicFromWeapon( int iAmmoId, wrect_t& rect );
 };
 
 extern WeaponsResource gWR;

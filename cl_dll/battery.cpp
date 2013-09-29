@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -46,7 +46,7 @@ int CHudBattery::VidInit(void)
 	int HUD_suit_empty = gHUD.GetSpriteIndex( "suit_empty" );
 	int HUD_suit_full = gHUD.GetSpriteIndex( "suit_full" );
 
-	m_hSprite1 = m_hSprite2 = 0;  // delaying get sprite handles until we know the sprites are loaded
+	m_SpriteHandle_t1 = m_SpriteHandle_t2 = 0;  // delaying get sprite handles until we know the sprites are loaded
 	m_prc1 = &gHUD.GetSpriteRect( HUD_suit_empty );
 	m_prc2 = &gHUD.GetSpriteRect( HUD_suit_full );
 	m_iHeight = m_prc2->bottom - m_prc1->top;
@@ -57,26 +57,16 @@ int CHudBattery::VidInit(void)
 int CHudBattery:: MsgFunc_Battery(const char *pszName,  int iSize, void *pbuf )
 {
 	m_iFlags |= HUD_ACTIVE;
+
 	
 	BEGIN_READ( pbuf, iSize );
 	int x = READ_SHORT();
 
-#if defined( _TFC )
-	int y = READ_SHORT();
-
-	if ( x != m_iBat || y != m_iBatMax )
-	{
-		m_fFade = FADE_TIME;
-		m_iBat = x;
-		m_iBatMax = y;
-	}
-#else
-	if ( x != m_iBat )
+	if (x != m_iBat)
 	{
 		m_fFade = FADE_TIME;
 		m_iBat = x;
 	}
-#endif
 
 	return 1;
 }
@@ -91,17 +81,7 @@ int CHudBattery::Draw(float flTime)
 	wrect_t rc;
 
 	rc = *m_prc2;
-
-#if defined( _TFC )
-	float fScale = 0.0;
-	
-	if ( m_iBatMax > 0 )
-		fScale = 1.0 / (float)m_iBatMax;
-
-	rc.top  += m_iHeight * ((float)(m_iBatMax-(min(m_iBatMax,m_iBat))) * fScale); // battery can go from 0 to m_iBatMax so * fScale goes from 0 to 1
-#else
 	rc.top  += m_iHeight * ((float)(100-(min(100,m_iBat))) * 0.01);	// battery can go from 0 to 100 so * 0.01 goes from 0 to 1
-#endif
 
 	UnpackRGB(r,g,b, RGB_YELLOWISH);
 
@@ -137,17 +117,17 @@ int CHudBattery::Draw(float flTime)
 	x = ScreenWidth/5;
 
 	// make sure we have the right sprite handles
-	if ( !m_hSprite1 )
-		m_hSprite1 = gHUD.GetSprite( gHUD.GetSpriteIndex( "suit_empty" ) );
-	if ( !m_hSprite2 )
-		m_hSprite2 = gHUD.GetSprite( gHUD.GetSpriteIndex( "suit_full" ) );
+	if ( !m_SpriteHandle_t1 )
+		m_SpriteHandle_t1 = gHUD.GetSprite( gHUD.GetSpriteIndex( "suit_empty" ) );
+	if ( !m_SpriteHandle_t2 )
+		m_SpriteHandle_t2 = gHUD.GetSprite( gHUD.GetSpriteIndex( "suit_full" ) );
 
-	SPR_Set(m_hSprite1, r, g, b );
+	SPR_Set(m_SpriteHandle_t1, r, g, b );
 	SPR_DrawAdditive( 0,  x, y - iOffset, m_prc1);
 
 	if (rc.bottom > rc.top)
 	{
-		SPR_Set(m_hSprite2, r, g, b );
+		SPR_Set(m_SpriteHandle_t2, r, g, b );
 		SPR_DrawAdditive( 0, x, y - iOffset + (rc.top - m_prc2->top), &rc);
 	}
 

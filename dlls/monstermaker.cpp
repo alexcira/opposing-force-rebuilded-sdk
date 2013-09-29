@@ -126,7 +126,7 @@ void CMonsterMaker :: Spawn( )
 		else
 		{// wait to be activated.
 			m_fActive = FALSE;
-			SetThink ( &CMonsterMaker::SUB_DoNothing );
+			SetThink ( &CBaseEntity::SUB_DoNothing );
 		}
 	}
 	else

@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -40,26 +40,26 @@ int CHudTrain::Init(void)
 
 int CHudTrain::VidInit(void)
 {
-	m_hSprite = 0;
+	m_SpriteHandle_t = 0;
 
 	return 1;
 };
 
 int CHudTrain::Draw(float fTime)
 {
-	if ( !m_hSprite )
-		m_hSprite = LoadSprite("sprites/%d_train.spr");
+	if ( !m_SpriteHandle_t )
+		m_SpriteHandle_t = LoadSprite("sprites/%d_train.spr");
 
 	if (m_iPos)
 	{
 		int r, g, b, x, y;
 
 		UnpackRGB(r,g,b, RGB_YELLOWISH);
-		SPR_Set(m_hSprite, r, g, b );
+		SPR_Set(m_SpriteHandle_t, r, g, b );
 
 		// This should show up to the right and part way up the armor number
-		y = ScreenHeight - SPR_Height(m_hSprite,0) - gHUD.m_iFontHeight;
-		x = ScreenWidth/3 + SPR_Width(m_hSprite,0)/4;
+		y = ScreenHeight - SPR_Height(m_SpriteHandle_t,0) - gHUD.m_iFontHeight;
+		x = ScreenWidth/3 + SPR_Width(m_SpriteHandle_t,0)/4;
 
 		SPR_DrawAdditive( m_iPos - 1,  x, y, NULL);
 

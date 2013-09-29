@@ -12,7 +12,7 @@
 #endif
 
 
-#include "VGUI_InputSignal.h"
+#include "vgui_inputsignal.h"
 
 
 namespace vgui

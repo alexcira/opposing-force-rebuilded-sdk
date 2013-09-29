@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -229,7 +229,7 @@ WEAPON* WeaponsResource :: GetNextActivePos( int iSlot, int iSlotPos )
 
 int giBucketHeight, giBucketWidth, giABHeight, giABWidth; // Ammo Bar width and height
 
-HSPRITE ghsprBuckets;					// Sprite for top row of weapons menu
+SpriteHandle_t ghsprBuckets;					// Sprite for top row of weapons menu
 
 DECLARE_MESSAGE(m_Ammo, CurWeapon );	// Current weapon and clip
 DECLARE_MESSAGE(m_Ammo, WeaponList);	// new weapon type
@@ -308,6 +308,9 @@ void CHudAmmo::Reset(void)
 
 	gWR.Reset();
 	gHR.Reset();
+
+	//	VidInit();
+
 }
 
 int CHudAmmo::VidInit(void)
@@ -391,7 +394,7 @@ void CHudAmmo::Think(void)
 // Helper function to return a Ammo pointer from id
 //
 
-HSPRITE* WeaponsResource :: GetAmmoPicFromWeapon( int iAmmoId, wrect_t& rect )
+SpriteHandle_t* WeaponsResource :: GetAmmoPicFromWeapon( int iAmmoId, wrect_t& rect )
 {
 	for ( int i = 0; i < MAX_WEAPONS; i++ )
 	{
@@ -671,6 +674,7 @@ int CHudAmmo::MsgFunc_WeaponList(const char *pszName, int iSize, void *pbuf )
 // Slot button pressed
 void CHudAmmo::SlotInput( int iSlot )
 {
+	// Let the Viewport use it first, for menus
 	if ( gViewPort && gViewPort->SlotInput( iSlot ) )
 		return;
 
@@ -736,7 +740,7 @@ void CHudAmmo::UserCmd_Close(void)
 		PlaySound("common/wpn_hudoff.wav", 1);
 	}
 	else
-		EngineClientCmd("escape");
+		ClientCmd("escape");
 }
 
 

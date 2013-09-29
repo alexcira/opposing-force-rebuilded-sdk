@@ -88,19 +88,6 @@ enum sbar_data
 class CBasePlayer : public CBaseMonster
 {
 public:
-	
-	// Spectator camera
-	void	Observer_FindNextPlayer( bool bReverse );
-	void	Observer_HandleButtons();
-	void	Observer_SetMode( int iMode );
-	void	Observer_CheckTarget();
-	void	Observer_CheckProperties();
-	EHANDLE	m_hObserverTarget;
-	float	m_flNextObserverInput;
-	int		m_iObserverWeapon;	// weapon of current tracked target
-	int		m_iObserverLastMode;// last used observer mode
-	int		IsObserver() { return pev->iuser1; };
-
 	int					random_seed;    // See that is shared between client & server for shared weapons code
 
 	int					m_iPlayerSound;// the index of the sound list slot reserved for this player
@@ -305,7 +292,7 @@ public:
 	void SetCustomDecalFrames( int nFrames );
 	int GetCustomDecalFrames( void );
 
-	void TabulateAmmo( void );
+	void CBasePlayer::TabulateAmmo( void );
 
 	float m_flStartCharge;
 	float m_flAmmoStartCharge;

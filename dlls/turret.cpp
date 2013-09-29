@@ -307,7 +307,7 @@ void CTurret::Spawn()
 	m_iMinPitch	= -15;
 	UTIL_SetSize(pev, Vector(-32, -32, -m_iRetractHeight), Vector(32, 32, m_iRetractHeight));
 	
-	SetThink(&CTurret::Initialize);	
+	SetThink(&CBaseTurret::Initialize);	
 
 	m_pEyeGlow = CSprite::SpriteCreate( TURRET_GLOW_SPRITE, pev->origin, FALSE );
 	m_pEyeGlow->SetTransparency( kRenderGlow, 255, 0, 0, 0, kRenderFxNoDissipation );
@@ -339,7 +339,7 @@ void CMiniTurret::Spawn()
 	m_iMinPitch	= -15;
 	UTIL_SetSize(pev, Vector(-16, -16, -m_iRetractHeight), Vector(16, 16, m_iRetractHeight));
 
-	SetThink(&CMiniTurret::Initialize);	
+	SetThink(&CBaseTurret::Initialize);	
 	pev->nextthink = gpGlobals->time + 0.3; 
 }
 
@@ -385,7 +385,7 @@ void CBaseTurret::Initialize(void)
 		pev->nextthink = gpGlobals->time + .1;
 	}
 	else
-		SetThink(&CBaseTurret::SUB_DoNothing);
+		SetThink(&CBaseEntity::SUB_DoNothing);
 }
 
 void CBaseTurret::TurretUse( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value )
@@ -714,7 +714,7 @@ void CBaseTurret::Retire(void)
 				pev->nextthink = gpGlobals->time + .1;
 			}
 			else
-				SetThink(&CBaseTurret::SUB_DoNothing);
+				SetThink(&CBaseEntity::SUB_DoNothing);
 		}
 	}
 	else
@@ -746,7 +746,7 @@ void CTurret::SpinUpCall(void)
 		{
 			pev->nextthink = gpGlobals->time + 0.1; // retarget delay
 			EMIT_SOUND(ENT(pev), CHAN_STATIC, "turret/tu_active2.wav", TURRET_MACHINE_VOLUME, ATTN_NORM);
-			SetThink(&CTurret::ActiveThink);
+			SetThink(&CBaseTurret::ActiveThink);
 			m_iStartSpin = 0;
 			m_iSpin = 1;
 		} 
@@ -758,7 +758,7 @@ void CTurret::SpinUpCall(void)
 
 	if (m_iSpin)
 	{
-		SetThink(&CTurret::ActiveThink);
+		SetThink(&CBaseTurret::ActiveThink);
 	}
 }
 
@@ -1180,7 +1180,7 @@ void CSentry::Spawn()
 	UTIL_SetSize(pev, Vector(-16, -16, -m_iRetractHeight), Vector(16, 16, m_iRetractHeight));
 
 	SetTouch(&CSentry::SentryTouch);
-	SetThink(&CSentry::Initialize);	
+	SetThink(&CBaseTurret::Initialize);	
 	pev->nextthink = gpGlobals->time + 0.3; 
 }
 
@@ -1204,7 +1204,7 @@ int CSentry::TakeDamage(entvars_t *pevInflictor, entvars_t *pevAttacker, float f
 
 	if (!m_iOn)
 	{
-		SetThink( &CSentry::Deploy );
+		SetThink( &CBaseTurret::Deploy );
 		SetUse( NULL );
 		pev->nextthink = gpGlobals->time + 0.1;
 	}
@@ -1219,7 +1219,7 @@ int CSentry::TakeDamage(entvars_t *pevInflictor, entvars_t *pevAttacker, float f
 		ClearBits (pev->flags, FL_MONSTER); // why are they set in the first place???
 
 		SetUse(NULL);
-		SetThink( &CSentry::SentryDeath);
+		SetThink(&CSentry::SentryDeath);
 		SUB_UseTargets( this, USE_ON, 0 ); // wake up others
 		pev->nextthink = gpGlobals->time + 0.1;
 

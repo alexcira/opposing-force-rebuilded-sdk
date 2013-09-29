@@ -1,11 +1,10 @@
-//========= Copyright © 1996-2001, Valve LLC, All rights reserved. ============
+//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
 // $NoKeywords: $
 //=============================================================================
 
-#include "archtypes.h"     // DAL
 #include "voice_gamemgr.h"
 #include <string.h>
 #include <assert.h>
@@ -36,7 +35,7 @@ cvar_t voice_serverdebug = {"voice_serverdebug", "0"};
 
 // Set game rules to allow all clients to talk to each other.
 // Muted players still can't talk to each other.
-cvar_t sv_alltalk = {"sv_alltalk", "0", FCVAR_SERVER};
+cvar_t sv_alltalk = {"sv_alltalk", "0"};
 
 // ------------------------------------------------------------------------ //
 // Static helpers.
@@ -179,7 +178,7 @@ bool CVoiceGameMgr::ClientCommand(CBasePlayer *pPlayer, const char *cmd)
 	{
 		for(int i=1; i < CMD_ARGC(); i++)
 		{
-			uint32 mask = 0;
+			unsigned long mask = 0;
 			sscanf(CMD_ARGV(i), "%x", &mask);
 
 			if(i <= VOICE_MAX_PLAYERS_DW)
@@ -216,7 +215,7 @@ void CVoiceGameMgr::UpdateMasks()
 {
 	m_UpdateInterval = 0;
 
-	bool bAllTalk = !!(sv_alltalk.value);
+	bool bAllTalk = !!g_engfuncs.pfnCVarGetFloat( "sv_alltalk" );
 
 	for(int iClient=0; iClient < m_nMaxPlayers; iClient++)
 	{
@@ -240,7 +239,8 @@ void CVoiceGameMgr::UpdateMasks()
 			for(int iOtherClient=0; iOtherClient < m_nMaxPlayers; iOtherClient++)
 			{
 				CBaseEntity *pEnt = UTIL_PlayerByIndex(iOtherClient+1);
-				if(pEnt && (bAllTalk || m_pHelper->CanPlayerHearPlayer(pPlayer, (CBasePlayer*)pEnt)) )
+				if(pEnt && pEnt->IsPlayer() && 
+					(bAllTalk || m_pHelper->CanPlayerHearPlayer(pPlayer, (CBasePlayer*)pEnt)) )
 				{
 					gameRulesMask[iOtherClient] = true;
 				}

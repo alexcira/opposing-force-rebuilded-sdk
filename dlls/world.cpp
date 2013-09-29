@@ -131,8 +131,8 @@ void CDecal :: Spawn( void )
 	else
 	{
 		// if there IS a targetname, the decal sprays itself on when it is triggered.
-		SetThink ( &CDecal::SUB_DoNothing );
-		SetUse( &CDecal::TriggerDecal);
+		SetThink ( &CBaseEntity::SUB_DoNothing );
+		SetUse(&CDecal::TriggerDecal);
 	}
 }
 
@@ -157,7 +157,7 @@ void CDecal :: TriggerDecal ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE
 			WRITE_SHORT( (int)VARS(trace.pHit)->modelindex );
 	MESSAGE_END();
 
-	SetThink( &CDecal::SUB_Remove );
+	SetThink( &CBaseEntity::SUB_Remove );
 	pev->nextthink = gpGlobals->time + 0.1;
 }
 

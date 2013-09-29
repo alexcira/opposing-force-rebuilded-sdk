@@ -618,7 +618,7 @@ void CTriggerMonsterJump :: Spawn ( void )
 	{// if targetted, spawn turned off
 		pev->solid = SOLID_NOT;
 		UTIL_SetOrigin( pev, pev->origin ); // Unlink from trigger list
-		SetUse( &CTriggerMonsterJump::ToggleUse );
+		SetUse( &CBaseTrigger::ToggleUse );
 	}
 }
 
@@ -712,7 +712,7 @@ void PlayCDTrack( int iTrack )
 
 	if ( iTrack == -1 )
 	{
-		CLIENT_COMMAND ( pClient, "cd stop\n");
+		CLIENT_COMMAND ( pClient, "cd pause\n");
 	}
 	else
 	{
@@ -808,11 +808,11 @@ void CTargetCDAudio::Play( void )
 void CTriggerHurt :: Spawn( void )
 {
 	InitTrigger();
-	SetTouch ( &CTriggerHurt::HurtTouch );
+	SetTouch ( &CBaseTrigger::HurtTouch );
 
 	if ( !FStringNull ( pev->targetname ) )
 	{
-		SetUse ( &CTriggerHurt::ToggleUse );
+		SetUse ( &CBaseTrigger::ToggleUse );
 	}
 	else
 	{
@@ -1080,7 +1080,7 @@ void CTriggerMultiple :: Spawn( void )
 //		}
 //	else
 		{
-			SetTouch( &CTriggerMultiple::MultiTouch );
+			SetTouch( &CBaseTrigger::MultiTouch );
 		}
 	}
 
@@ -1186,7 +1186,7 @@ void CBaseTrigger :: ActivateMultiTrigger( CBaseEntity *pActivator )
 		// called while C code is looping through area links...
 		SetTouch( NULL );
 		pev->nextthink = gpGlobals->time + 0.1;
-		SetThink(  &CBaseTrigger::SUB_Remove );
+		SetThink(  &CBaseEntity::SUB_Remove );
 	}
 }
 
@@ -1266,7 +1266,7 @@ void CTriggerCounter :: Spawn( void )
 
 	if (m_cTriggersLeft == 0)
 		m_cTriggersLeft = 2;
-	SetUse( &CTriggerCounter::CounterUse );
+	SetUse( &CBaseTrigger::CounterUse );
 }
 
 // ====================== TRIGGER_CHANGELEVEL ================================
@@ -1816,7 +1816,7 @@ void CTriggerPush :: Spawn( )
 	if ( FBitSet (pev->spawnflags, SF_TRIGGER_PUSH_START_OFF) )// if flagged to Start Turned Off, make trigger nonsolid.
 		pev->solid = SOLID_NOT;
 
-	SetUse( &CTriggerPush::ToggleUse );
+	SetUse( &CBaseTrigger::ToggleUse );
 
 	UTIL_SetOrigin( pev, pev->origin );		// Link into the list
 }
@@ -1934,7 +1934,7 @@ void CTriggerTeleport :: Spawn( void )
 {
 	InitTrigger();
 
-	SetTouch( &CTriggerTeleport::TeleportTouch );
+	SetTouch( &CBaseTrigger::TeleportTouch );
 }
 
 

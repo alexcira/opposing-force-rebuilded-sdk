@@ -1,4 +1,4 @@
-//========= Copyright ï¿½ 1996-2001, Valve LLC, All rights reserved. ============
+//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -12,21 +12,19 @@
 #endif
 
 
-#include "archtypes.h"     // DAL
 #include <assert.h>
-#include <string.h>
 
 
 class CBitVecAccessor
 {
 public:
-				CBitVecAccessor(uint32 *pDWords, int iBit);
+				CBitVecAccessor(unsigned long *pDWords, int iBit);
 
 	void		operator=(int val);
-				operator uint32();
+				operator unsigned long();
 
 private:
-	uint32	*m_pDWords;
+	unsigned long	*m_pDWords;
 	int				m_iBit;
 };
 	
@@ -53,15 +51,15 @@ public:
 
 	// Get underlying dword representations of the bits.
 	int				GetNumDWords();
-	uint32	GetDWord(int i);
-	void			SetDWord(int i, uint32 val);
+	unsigned long	GetDWord(int i);
+	void			SetDWord(int i, unsigned long val);
 
 	int				GetNumBits();
 
 private:
 
 	enum {NUM_DWORDS = NUM_BITS/32 + !!(NUM_BITS & 31)};
-	uint32	m_DWords[NUM_DWORDS];
+	unsigned long	m_DWords[NUM_DWORDS];
 };
 
 
@@ -70,7 +68,7 @@ private:
 // CBitVecAccessor inlines.
 // ------------------------------------------------------------------------ //
 
-inline CBitVecAccessor::CBitVecAccessor(uint32 *pDWords, int iBit)
+inline CBitVecAccessor::CBitVecAccessor(unsigned long *pDWords, int iBit)
 {
 	m_pDWords = pDWords;
 	m_iBit = iBit;
@@ -82,10 +80,10 @@ inline void CBitVecAccessor::operator=(int val)
 	if(val)
 		m_pDWords[m_iBit >> 5] |= (1 << (m_iBit & 31));
 	else
-		m_pDWords[m_iBit >> 5] &= ~(uint32)(1 << (m_iBit & 31));
+		m_pDWords[m_iBit >> 5] &= ~(unsigned long)(1 << (m_iBit & 31));
 }
 
-inline CBitVecAccessor::operator uint32()
+inline CBitVecAccessor::operator unsigned long()
 {
 	return m_pDWords[m_iBit >> 5] & (1 << (m_iBit & 31));
 }
@@ -162,7 +160,7 @@ inline int CBitVec<NUM_BITS>::GetNumDWords()
 }
 
 template<int NUM_BITS>
-inline uint32 CBitVec<NUM_BITS>::GetDWord(int i)
+inline unsigned long CBitVec<NUM_BITS>::GetDWord(int i)
 {
 	assert(i >= 0 && i < NUM_DWORDS);
 	return m_DWords[i];
@@ -170,7 +168,7 @@ inline uint32 CBitVec<NUM_BITS>::GetDWord(int i)
 
 
 template<int NUM_BITS>
-inline void CBitVec<NUM_BITS>::SetDWord(int i, uint32 val)
+inline void CBitVec<NUM_BITS>::SetDWord(int i, unsigned long val)
 {
 	assert(i >= 0 && i < NUM_DWORDS);
 	m_DWords[i] = val;

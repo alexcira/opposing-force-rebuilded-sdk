@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1999, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -115,7 +115,7 @@ int CHudDeathNotice :: Draw( float flTime )
 		if ( gViewPort && gViewPort->AllowedToPrintText() )
 		{
 			// Draw the death notice
-			y = DEATHNOTICE_TOP + 2 + (20 * i);  //!!!
+			y = YRES(DEATHNOTICE_TOP) + 2 + (20 * i);  //!!!
 
 			int id = (rgDeathNoticeList[i].iId == -1) ? m_HUD_d_skull : rgDeathNoticeList[i].iId;
 			x = ScreenWidth - ConsoleStringLen(rgDeathNoticeList[i].szVictim) - (gHUD.GetSpriteRect(id).right - gHUD.GetSpriteRect(id).left);
@@ -173,6 +173,7 @@ int CHudDeathNotice :: MsgFunc_DeathMsg( const char *pszName, int iSize, void *p
 		gViewPort->DeathMsg( killer, victim );
 
 	gHUD.m_Spectator.DeathMessage(victim);
+
 	int i;
 	for ( i = 0; i < MAX_DEATHNOTICES; i++ )
 	{

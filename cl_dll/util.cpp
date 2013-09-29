@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -18,9 +18,9 @@
 // implementation of class-less helper functions
 //
 
-#include "stdio.h"
-#include "stdlib.h"
-#include "math.h"
+#include "STDIO.H"
+#include "STDLIB.H"
+#include "MATH.H"
 
 #include "hud.h"
 #include "cl_util.h"
@@ -116,7 +116,7 @@ void VectorMA (const float *veca, float scale, const float *vecb, float *vecc)
 	vecc[2] = veca[2] + scale*vecb[2];
 }
 
-HSPRITE LoadSprite(const char *pszName)
+SpriteHandle_t LoadSprite(const char *pszName)
 {
 	int i;
 	char sz[256]; 

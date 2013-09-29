@@ -7,9 +7,9 @@
 
 #include "../cl_dll/wrect.h"
 #include "../cl_dll/cl_dll.h"
-#include "VGUI.h"
+#include "vgui.h"
 #include "vgui_loadtga.h"
-#include "VGUI_InputStream.h"
+#include "vgui_inputstream.h"
 
 
 // ---------------------------------------------------------------------- //

@@ -26,9 +26,6 @@
 #include "saverestore.h"
 #include "doors.h"
 
-#if !defined ( _WIN32 )
-#include <string.h> // memset())))
-#endif
 
 #define SF_BUTTON_DONTMOVE		1
 #define SF_ROTBUTTON_NOTSOLID	1
@@ -243,7 +240,7 @@ void CMultiSource::Register(void)
 	m_iTotal = 0;
 	memset( m_rgEntities, 0, MS_MAX_TARGETS * sizeof(EHANDLE) );
 
-	SetThink(&CMultiSource::SUB_DoNothing);
+	SetThink(&CBaseEntity::SUB_DoNothing);
 
 	// search for all entities which target this multisource (pev->targetname)
 
@@ -860,10 +857,10 @@ void CRotButton::Spawn( void )
 	if ( !FBitSet ( pev->spawnflags, SF_BUTTON_TOUCH_ONLY ) )
 	{
 		SetTouch ( NULL );
-		SetUse	 ( &CRotButton::ButtonUse );
+		SetUse	 ( &CBaseButton::ButtonUse );
 	}
 	else // touchable button
-		SetTouch( &CRotButton::ButtonTouch );
+		SetTouch( &CBaseButton::ButtonTouch );
 
 	//SetTouch( ButtonTouch );
 }
@@ -989,12 +986,7 @@ void CMomentaryRotButton::Use( CBaseEntity *pActivator, CBaseEntity *pCaller, US
 	pev->ideal_yaw = CBaseToggle::AxisDelta( pev->spawnflags, pev->angles, m_start ) / m_flMoveDistance;
 
 	UpdateAllButtons( pev->ideal_yaw, 1 );
-
-	// Calculate destination angle and use it to predict value, this prevents sending target in wrong direction on retriggering
-	Vector dest = pev->angles + pev->avelocity * (pev->nextthink - pev->ltime);
-	float value1 = CBaseToggle::AxisDelta( pev->spawnflags, dest, m_start ) / m_flMoveDistance;
-	UpdateTarget( value1 );
-
+	UpdateTarget( pev->ideal_yaw );
 }
 
 void CMomentaryRotButton::UpdateAllButtons( float value, int start )

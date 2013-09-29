@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -17,7 +17,8 @@
 #include "demo.h"
 #include "demo_api.h"
 #include <memory.h>
-#include "Exports.h"
+
+#define DLLEXPORT __declspec( dllexport )
 
 int g_demosniper = 0;
 int g_demosniperdamage = 0;
@@ -26,6 +27,11 @@ float g_demosniperangles[3];
 float g_demozoom;
 
 // FIXME:  There should be buffer helper functions to avoid all of the *(int *)& crap.
+
+extern "C" 
+{
+	void DLLEXPORT Demo_ReadBuffer( int size, unsigned char *buffer );
+}
 
 /*
 =====================
@@ -54,10 +60,8 @@ Demo_ReadBuffer
 Engine wants us to parse some data from the demo stream
 =====================
 */
-void CL_DLLEXPORT Demo_ReadBuffer( int size, unsigned char *buffer )
+void DLLEXPORT Demo_ReadBuffer( int size, unsigned char *buffer )
 {
-//	RecClReadDemoBuffer(size, buffer);
-
 	int type;
 	int i = 0;
 

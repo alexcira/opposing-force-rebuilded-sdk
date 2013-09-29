@@ -253,7 +253,7 @@ void CCineMonster :: Touch( CBaseEntity *pOther )
 //
 void CCineMonster :: Die( void )
 {
-	SetThink( &CCineMonster::SUB_Remove );
+	SetThink( &CBaseEntity::SUB_Remove );
 }
 
 //
@@ -564,7 +564,7 @@ void CCineMonster :: SequenceDone ( CBaseMonster *pMonster )
 
 	if ( !( pev->spawnflags & SF_SCRIPT_REPEATABLE ) )
 	{
-		SetThink( &CCineMonster::SUB_Remove );
+		SetThink( &CBaseEntity::SUB_Remove );
 		pev->nextthink = gpGlobals->time + 0.1;
 	}
 	
@@ -1219,7 +1219,7 @@ LINK_ENTITY_TO_CLASS( monster_furniture, CFurniture );
 //=========================================================
 void CFurniture :: Die ( void )
 {
-	SetThink ( &CFurniture::SUB_Remove );
+	SetThink ( &CBaseEntity::SUB_Remove );
 	pev->nextthink = gpGlobals->time;
 }
 

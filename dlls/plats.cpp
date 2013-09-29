@@ -385,7 +385,7 @@ void CPlatTrigger :: Touch( CBaseEntity *pOther )
 		return;
 
 	// Ignore touches by corpses
-	if (!pOther->IsAlive()||!m_pPlatform||!m_pPlatform->pev)
+	if (!pOther->IsAlive())
 		return;
 	
 	// Make linked platform go up/down.
@@ -1589,7 +1589,7 @@ void CFuncTrainControls :: Spawn( void )
 	UTIL_SetSize( pev, pev->mins, pev->maxs );
 	UTIL_SetOrigin( pev, pev->origin );
 	
-	SetThink(&CFuncTrainControls::Find );
+	SetThink( &CFuncTrainControls::Find );
 	pev->nextthink = gpGlobals->time;
 }
 
@@ -1862,14 +1862,14 @@ void CFuncTrackChange :: GoDown( void )
 	// If ROTMOVE, move & rotate
 	if ( FBitSet( pev->spawnflags, SF_TRACK_DONT_MOVE ) )
 	{
-		SetMoveDone( &CFuncTrackChange::CallHitBottom );
+		SetMoveDone( &CFuncPlat::CallHitBottom );
 		m_toggle_state = TS_GOING_DOWN;
 		AngularMove( m_start, pev->speed );
 	}
 	else
 	{
 		CFuncPlat :: GoDown();
-		SetMoveDone( &CFuncTrackChange::CallHitBottom );
+		SetMoveDone( &CFuncPlat::CallHitBottom );
 		RotMove( m_start, pev->nextthink - pev->ltime );
 	}
 	// Otherwise, rotate first, move second
@@ -1898,14 +1898,14 @@ void CFuncTrackChange :: GoUp( void )
 	if ( FBitSet( pev->spawnflags, SF_TRACK_DONT_MOVE ) )
 	{
 		m_toggle_state = TS_GOING_UP;
-		SetMoveDone( &CFuncTrackChange::CallHitTop );
+		SetMoveDone( &CFuncPlat::CallHitTop );
 		AngularMove( m_end, pev->speed );
 	}
 	else
 	{
 		// If ROTMOVE, move & rotate
 		CFuncPlat :: GoUp();
-		SetMoveDone( &CFuncTrackChange::CallHitTop );
+		SetMoveDone( &CFuncPlat::CallHitTop );
 		RotMove( m_end, pev->nextthink - pev->ltime );
 	}
 	

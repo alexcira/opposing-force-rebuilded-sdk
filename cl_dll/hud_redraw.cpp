@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1999, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -18,7 +18,6 @@
 #include <math.h>
 #include "hud.h"
 #include "cl_util.h"
-#include "bench.h"
 
 #include "vgui_TeamFortressViewport.h"
 
@@ -41,9 +40,6 @@ extern cvar_t *sensitivity;
 // Think
 void CHud::Think(void)
 {
-	m_scrinfo.iSize = sizeof(m_scrinfo);
-	GetScreenInfo(&m_scrinfo);
-
 	int newfov;
 	HUDLIST *pList = m_pHudList;
 
@@ -83,13 +79,6 @@ void CHud::Think(void)
 	{  // only let players adjust up in fov,  and only if they are not overriden by something else
 		m_iFOV = max( default_fov->value, 90 );  
 	}
-	
-	if ( gEngfuncs.IsSpectateOnly() )
-	{
-		m_iFOV = gHUD.m_Spectator.GetFOV();	// default_fov->value;
-	}
-
-	Bench_CheckStart();
 }
 
 // Redraw
@@ -100,7 +89,7 @@ int CHud :: Redraw( float flTime, int intermission )
 	m_fOldTime = m_flTime;	// save time of previous redraw
 	m_flTime = flTime;
 	m_flTimeDelta = (double)m_flTime - m_fOldTime;
-	static float m_flShotTime = 0;
+	static int m_flShotTime = 0;
 	
 	// Clock was reset, reset delta
 	if ( m_flTimeDelta < 0 )
@@ -142,34 +131,21 @@ int CHud :: Redraw( float flTime, int intermission )
 	// if no redrawing is necessary
 	// return 0;
 	
-	// draw all registered HUD elements
 	if ( m_pCvarDraw->value )
 	{
 		HUDLIST *pList = m_pHudList;
 
 		while (pList)
 		{
-			if ( !Bench_Active() )
+			if ( !intermission )
 			{
-				if ( !intermission )
-				{
-					if ( (pList->p->m_iFlags & HUD_ACTIVE) && !(m_iHideHUDDisplay & HIDEHUD_ALL) )
-						pList->p->Draw(flTime);
-				}
-				else
-				{  // it's an intermission,  so only draw hud elements that are set to draw during intermissions
-					if ( pList->p->m_iFlags & HUD_INTERMISSION )
-						pList->p->Draw( flTime );
-				}
+				if ( (pList->p->m_iFlags & HUD_ACTIVE) && !(m_iHideHUDDisplay & HIDEHUD_ALL) )
+					pList->p->Draw(flTime);
 			}
 			else
-			{
-				if ( ( pList->p == &m_Benchmark ) &&
-					 ( pList->p->m_iFlags & HUD_ACTIVE ) &&
-					 !( m_iHideHUDDisplay & HIDEHUD_ALL ) )
-				{
-					pList->p->Draw(flTime);
-				}
+			{  // it's an intermission,  so only draw hud elements that are set to draw during intermissions
+				if ( pList->p->m_iFlags & HUD_INTERMISSION )
+					pList->p->Draw( flTime );
 			}
 
 			pList = pList->pNext;
@@ -232,7 +208,18 @@ void ScaleColors( int &r, int &g, int &b, int a )
 
 int CHud :: DrawHudString(int xpos, int ypos, int iMaxX, char *szIt, int r, int g, int b )
 {
-	return xpos + gEngfuncs.pfnDrawString( xpos, ypos, szIt, r, g, b);
+	// draw the string until we hit the null character or a newline character
+	for ( ; *szIt != 0 && *szIt != '\n'; szIt++ )
+	{
+		int next = xpos + gHUD.m_scrinfo.charWidths[ *szIt ]; // variable-width fonts look cool
+		if ( next > iMaxX )
+			return xpos;
+
+		TextMessageDrawChar( xpos, ypos, *szIt, r, g, b );
+		xpos = next;		
+	}
+
+	return xpos;
 }
 
 int CHud :: DrawHudNumberString( int xpos, int ypos, int iMinX, int iNumber, int r, int g, int b )
@@ -246,7 +233,24 @@ int CHud :: DrawHudNumberString( int xpos, int ypos, int iMinX, int iNumber, int
 // draws a string from right to left (right-aligned)
 int CHud :: DrawHudStringReverse( int xpos, int ypos, int iMinX, char *szString, int r, int g, int b )
 {
-	return xpos - gEngfuncs.pfnDrawStringReverse( xpos, ypos, szString, r, g, b);
+	// find the end of the string
+	char *szIt;
+	for ( szIt = szString; *szIt != 0; szIt++ )
+	{ // we should count the length?		
+	}
+
+	// iterate throug the string in reverse
+	for ( szIt--;  szIt != (szString-1);  szIt-- )	
+	{
+		int next = xpos - gHUD.m_scrinfo.charWidths[ *szIt ]; // variable-width fonts look cool
+		if ( next < iMinX )
+			return xpos;
+		xpos = next;
+
+		TextMessageDrawChar( xpos, ypos, *szIt, r, g, b );
+	}
+
+	return xpos;
 }
 
 int CHud :: DrawHudNumber( int x, int y, int iFlags, int iNumber, int r, int g, int b)

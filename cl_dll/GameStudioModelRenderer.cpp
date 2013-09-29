@@ -26,7 +26,6 @@
 
 #include "StudioModelRenderer.h"
 #include "GameStudioModelRenderer.h"
-#include "Exports.h"
 
 //
 // Override the StudioModelRender virtual member functions here to implement custom bone
@@ -100,10 +99,9 @@ HUD_GetStudioModelInterface
 Export this function for the engine to use the studio renderer class to render objects.
 ====================
 */
-int CL_DLLEXPORT HUD_GetStudioModelInterface( int version, struct r_studio_interface_s **ppinterface, struct engine_studio_api_s *pstudio )
+#define DLLEXPORT __declspec( dllexport )
+extern "C" int DLLEXPORT HUD_GetStudioModelInterface( int version, struct r_studio_interface_s **ppinterface, struct engine_studio_api_s *pstudio )
 {
-//	RecClStudioInterface(version, ppinterface, pstudio);
-
 	if ( version != STUDIO_INTERFACE_VERSION )
 		return 0;
 

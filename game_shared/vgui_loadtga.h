@@ -12,7 +12,7 @@
 #endif
 
 
-#include "VGUI_BitmapTGA.h"
+#include "vgui_bitmaptga.h"
 
 
 vgui::BitmapTGA* vgui_LoadTGA(char const *pFilename);

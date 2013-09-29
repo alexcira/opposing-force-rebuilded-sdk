@@ -24,10 +24,6 @@
 #include "talkmonster.h"
 #include "gamerules.h"
 
-#if !defined ( _WIN32 )
-#include <ctype.h>
-#endif
-
 
 static char *memfgets( byte *pMemFile, int fileSize, int &filePos, char *pBuffer, int bufferSize );
 
@@ -197,7 +193,7 @@ void CAmbientGeneric :: Spawn( void )
 	{
 		ALERT( at_error, "EMPTY AMBIENT AT: %f, %f, %f\n", pev->origin.x, pev->origin.y, pev->origin.z );
 		pev->nextthink = gpGlobals->time + 0.1;
-		SetThink( &CAmbientGeneric::SUB_Remove );
+		SetThink( &CBaseEntity::SUB_Remove );
 		return;
 	}
     pev->solid		= SOLID_NOT;
@@ -1541,7 +1537,7 @@ void TEXTURETYPE_Init()
 	char buffer[512];
 	int i, j;
 	byte *pMemFile;
-	int fileSize, filePos = 0;
+	int fileSize, filePos;
 
 	if (fTextureTypeInit)
 		return;
@@ -1828,7 +1824,7 @@ void CSpeaker :: Spawn( void )
 	{
 		ALERT( at_error, "SPEAKER with no Level/Sentence! at: %f, %f, %f\n", pev->origin.x, pev->origin.y, pev->origin.z );
 		pev->nextthink = gpGlobals->time + 0.1;
-		SetThink( &CSpeaker::SUB_Remove );
+		SetThink( &CBaseEntity::SUB_Remove );
 		return;
 	}
     pev->solid		= SOLID_NOT;

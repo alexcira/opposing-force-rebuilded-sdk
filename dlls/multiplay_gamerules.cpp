@@ -28,10 +28,6 @@
 #include	"voice_gamemgr.h"
 #include	"hltv.h"
 
-#if !defined ( _WIN32 )
-#include <ctype.h>
-#endif
-
 extern DLL_GLOBAL CGameRules	*g_pGameRules;
 extern DLL_GLOBAL BOOL	g_fGameOver;
 extern int gmsgDeathMsg;	// client dll messages
@@ -90,7 +86,17 @@ CHalfLifeMultiplay :: CHalfLifeMultiplay()
 	// share a single config file. (sjb)
 	if ( IS_DEDICATED_SERVER() )
 	{
-		// this code has been moved into engine, to only run server.cfg once
+		// dedicated server
+		char *servercfgfile = (char *)CVAR_GET_STRING( "servercfgfile" );
+
+		if ( servercfgfile && servercfgfile[0] )
+		{
+			char szCommand[256];
+			
+			ALERT( at_console, "Executing dedicated server config file\n" );
+			sprintf( szCommand, "exec %s\n", servercfgfile );
+			SERVER_COMMAND( szCommand );
+		}
 	}
 	else
 	{

@@ -24,13 +24,6 @@
 #include	"animation.h"
 #include	"doors.h"
 
-#if !defined ( _WIN32 )
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <fcntl.h>
-#include <unistd.h> // mkdir
-#endif
-
 #define	HULL_STEP_SIZE 16// how far the test hull moves on each step
 #define	NODE_HEIGHT	8	// how high to lift nodes off the ground after we drop them all (make stair/ramp mapping easier)
 
@@ -47,7 +40,7 @@ CGraph	WorldGraph;
 
 LINK_ENTITY_TO_CLASS( info_node, CNodeEnt );
 LINK_ENTITY_TO_CLASS( info_node_air, CNodeEnt );
-#ifdef _LINUX
+#ifdef __linux__
 #include <unistd.h>
 #define CreateDirectory(p, n) mkdir(p, 0777)
 #endif
@@ -1466,7 +1459,7 @@ void CTestHull :: Spawn( entvars_t *pevMasterNode )
 
 	if ( WorldGraph.m_fGraphPresent )
 	{// graph loaded from disk, so we don't need the test hull
-		SetThink ( &CTestHull::SUB_Remove );
+		SetThink ( &CBaseEntity::SUB_Remove );
 		pev->nextthink = gpGlobals->time;
 	}
 	else
@@ -1487,7 +1480,7 @@ void CTestHull :: Spawn( entvars_t *pevMasterNode )
 //=========================================================
 void CTestHull::DropDelay ( void )
 {
-//	UTIL_CenterPrintAll( "Node Graph out of Date. Rebuilding..." );
+	UTIL_CenterPrintAll( "Node Graph out of Date. Rebuilding..." );
 
 	UTIL_SetOrigin ( VARS(pev), WorldGraph.m_pNodes[ 0 ].m_vecOrigin );
 
@@ -1639,7 +1632,7 @@ void CTestHull :: BuildNodeGraph( void )
 	float	flDist;
 	int		step;
 
-	SetThink ( &CTestHull::SUB_Remove );// no matter what happens, the hull gets rid of itself.
+	SetThink ( &CBaseEntity::SUB_Remove );// no matter what happens, the hull gets rid of itself.
 	pev->nextthink = gpGlobals->time;
 
 // 	malloc a swollen temporary connection pool that we trim down after we know exactly how many connections there are.
@@ -2740,8 +2733,8 @@ void CGraph::HashChoosePrimes(int TableSize)
     // We divide this interval into 16 equal sized zones. We want to find
     // one prime number that best represents that zone.
     //
-    int iPrime,iZone;;
-    for (iZone = 1, iPrime = 0; iPrime < 16; iZone += Spacing)
+	int iPrime;
+    for (int iZone = 1, iPrime = 0; iPrime < 16; iZone += Spacing)
     {
         // Search for a prime number that is less than the target zone
         // number given by iZone.
@@ -2798,10 +2791,9 @@ void CGraph::SortNodes(void)
 	// things and patchup the links.
 	//
 	int iNodeCnt = 0;
-	int i;
 	m_pNodes[0].m_iPreviousNode = iNodeCnt++;
-
-	for (i = 1; i < m_cNodes; i++)
+	int i;
+	for ( i = 1; i < m_cNodes; i++)
 	{
 		m_pNodes[i].m_iPreviousNode = UNNUMBERED_NODE;
 	}
@@ -2867,7 +2859,7 @@ void CGraph::BuildLinkLookups(void)
 		return;
 	}
 	int i;
-	for (i = 0; i < m_nHashLinks; i++)
+	for ( i = 0; i < m_nHashLinks; i++)
 	{
 		m_pHashLinks[i] = ENTRY_STATE_EMPTY;
 	}
@@ -2939,7 +2931,7 @@ void CGraph::BuildRegionTables(void)
 	for (i = 0; i < 3; i++)
 	{
 		int j;
-		for (j = 0; j < NUM_RANGES; j++)
+		for ( j = 0; j < NUM_RANGES; j++)
 		{
 			m_RangeStart[i][j] = 255;
 			m_RangeEnd[i][j] = 0;
@@ -3074,7 +3066,7 @@ void CGraph :: ComputeStaticRoutingTables( void )
 				// Initialize Routing table to uncalculated.
 				//
 				int iFrom;
-				for (iFrom = 0; iFrom < m_cNodes; iFrom++)
+				for ( iFrom = 0; iFrom < m_cNodes; iFrom++)
 				{
 					for (int iTo = 0; iTo < m_cNodes; iTo++)
 					{
@@ -3291,7 +3283,7 @@ void CGraph :: ComputeStaticRoutingTables( void )
 					if (m_pRouteInfo)
 					{
 						int i;
-						for (i = 0; i < m_nRouteInfo - nRoute; i++)
+						for ( i = 0; i < m_nRouteInfo - nRoute; i++)
 						{
 							if (memcmp(m_pRouteInfo + i, pRoute, nRoute) == 0)
 							{
@@ -3384,7 +3376,7 @@ void CGraph :: TestRoutingTables( void )
 #if 1
 						float flDistance1 = 0.0;
 						int i;
-						for (i = 0; i < cPathSize1-1; i++)
+						for ( i = 0; i < cPathSize1-1; i++)
 						{
 							// Find the link from pMyPath[i] to pMyPath[i+1]
 							//
@@ -3438,7 +3430,7 @@ void CGraph :: TestRoutingTables( void )
 #endif
 							ALERT(at_aiconsole, "Routing is inconsistent!!!\n");
 							ALERT(at_aiconsole, "(%d to %d |%d/%d)1:", iFrom, iTo, iHull, iCap);
-							for (int i = 0; i < cPathSize1; i++)
+							for ( i = 0; i < cPathSize1; i++)
 							{
 								ALERT(at_aiconsole, "%d ", pMyPath[i]);
 							}

@@ -145,7 +145,7 @@ void CLegacyCineMonster :: Use( CBaseEntity *pActivator, CBaseEntity *pCaller, U
 //
 void CLegacyCineMonster :: Die( void )
 {
-	SetThink( &CLegacyCineMonster::SUB_Remove );
+	SetThink( &CBaseEntity::SUB_Remove );
 }
 
 //

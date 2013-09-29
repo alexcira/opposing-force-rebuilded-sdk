@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -29,10 +29,9 @@
 
 #include "demo.h"
 #include "demo_api.h"
-#include "vgui_ScorePanel.h"
+#include "vgui_scorepanel.h"
 
-hud_player_info_t	 g_PlayerInfoList[MAX_PLAYERS+1];	   // player info from the engine
-extra_player_info_t  g_PlayerExtraInfo[MAX_PLAYERS+1];   // additional player info sent directly to the client dll
+
 
 class CHLVoiceStatusHelper : public IVoiceStatusHelper
 {
@@ -259,27 +258,13 @@ int __MsgFunc_Spectator(const char *pszName, int iSize, void *pbuf)
 	return 0;
 }
 
-int __MsgFunc_SpecFade(const char *pszName, int iSize, void *pbuf)
-{
-	if (gViewPort)
-		return gViewPort->MsgFunc_SpecFade( pszName, iSize, pbuf );
-	return 0;
-}
-
-int __MsgFunc_ResetFade(const char *pszName, int iSize, void *pbuf)
-{
-	if (gViewPort)
-		return gViewPort->MsgFunc_ResetFade( pszName, iSize, pbuf );
-	return 0;
-}
-
 int __MsgFunc_AllowSpec(const char *pszName, int iSize, void *pbuf)
 {
 	if (gViewPort)
 		return gViewPort->MsgFunc_AllowSpec( pszName, iSize, pbuf );
 	return 0;
 }
-
+ 
 // This is called every time the DLL is loaded
 void CHud :: Init( void )
 {
@@ -312,9 +297,6 @@ void CHud :: Init( void )
 
 	HOOK_MESSAGE( Spectator );
 	HOOK_MESSAGE( AllowSpec );
-	
-	HOOK_MESSAGE( SpecFade );
-	HOOK_MESSAGE( ResetFade );
 
 	// VGUI Menus
 	HOOK_MESSAGE( VGUIMenu );
@@ -377,7 +359,7 @@ void CHud :: Init( void )
 // cleans up memory allocated for m_rg* arrays
 CHud :: ~CHud()
 {
-	delete [] m_rghSprites;
+	delete [] m_rgSpriteHandle_ts;
 	delete [] m_rgrcRects;
 	delete [] m_rgszSpriteNames;
 
@@ -398,7 +380,7 @@ CHud :: ~CHud()
 
 // GetSpriteIndex()
 // searches through the sprite list loaded from hud.txt for a name matching SpriteName
-// returns an index into the gHUD.m_rghSprites[] array
+// returns an index into the gHUD.m_rgSpriteHandle_ts[] array
 // returns 0 if sprite not found
 int CHud :: GetSpriteIndex( const char *SpriteName )
 {
@@ -450,7 +432,7 @@ void CHud :: VidInit( void )
 			}
 
 			// allocated memory for sprite handle arrays
- 			m_rghSprites = new HSPRITE[m_iSpriteCount];
+ 			m_rgSpriteHandle_ts = new SpriteHandle_t[m_iSpriteCount];
 			m_rgrcRects = new wrect_t[m_iSpriteCount];
 			m_rgszSpriteNames = new char[m_iSpriteCount * MAX_SPRITE_NAME_LENGTH];
 
@@ -462,7 +444,7 @@ void CHud :: VidInit( void )
 				{
 					char sz[256];
 					sprintf(sz, "sprites/%s.spr", p->szSprite);
-					m_rghSprites[index] = SPR_Load(sz);
+					m_rgSpriteHandle_ts[index] = SPR_Load(sz);
 					m_rgrcRects[index] = p->rc;
 					strncpy( &m_rgszSpriteNames[index * MAX_SPRITE_NAME_LENGTH], p->szName, MAX_SPRITE_NAME_LENGTH );
 
@@ -485,7 +467,7 @@ void CHud :: VidInit( void )
 			{
 				char sz[256];
 				sprintf( sz, "sprites/%s.spr", p->szSprite );
-				m_rghSprites[index] = SPR_Load(sz);
+				m_rgSpriteHandle_ts[index] = SPR_Load(sz);
 				index++;
 			}
 
