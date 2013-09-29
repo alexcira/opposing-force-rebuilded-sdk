@@ -323,3 +323,56 @@ int CZombieSoldier::IgnoreConditions ( void )
 	return iIgnore;
 	
 }
+
+//=========================================================
+// Dead Zombie Soldier PROP
+//=========================================================
+class CDeadZombieSoldier : public CBaseMonster
+{
+public:
+	void Spawn( void );
+	void Precache( void );
+
+	int	Classify ( void ) { return	CLASS_HUMAN_PASSIVE; }
+	void KeyValue( KeyValueData *pkvd );
+	int	m_iPose;// which sequence to display
+	static char *m_szPoses[2];
+};
+
+char *CDeadZombieSoldier::m_szPoses[] = { "dead_on_back", "dead_on_stomach" };
+void CDeadZombieSoldier::KeyValue( KeyValueData *pkvd )
+{
+	if (FStrEq(pkvd->szKeyName, "pose"))
+	{
+		m_iPose = atoi(pkvd->szValue);
+		pkvd->fHandled = TRUE;
+	}
+	else
+		CBaseMonster::KeyValue( pkvd );
+}
+
+// ********** Dead Zombie Soldier SPAWN **********
+void CDeadZombieSoldier :: Spawn( )
+{
+	Precache();
+	SET_MODEL(ENT(pev), "models/zombie_soldier.mdl");
+	
+	pev->effects		= 0;
+	pev->sequence		= 0;
+	pev->health			= 8;
+
+	m_bloodColor = BLOOD_COLOR_GREEN;
+
+	pev->sequence = LookupSequence( m_szPoses[m_iPose] );
+	if (pev->sequence == -1)
+		ALERT ( at_console, "Dead scientist with bad pose\n" );
+
+	MonsterInitDead();
+}
+
+void CDeadZombieSoldier :: Precache( void )
+{
+	PRECACHE_MODEL("models/zombie_soldier.mdl");
+}
+
+LINK_ENTITY_TO_CLASS( monster_zombie_soldier_dead, CDeadZombieSoldier );
