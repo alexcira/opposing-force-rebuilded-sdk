@@ -15,15 +15,11 @@
 //=========================================================
 // Zombie
 //=========================================================
-
-// UNDONE: Don't flinch every time you get hit
-
 #include	"extdll.h"
 #include	"util.h"
 #include	"cbase.h"
 #include	"monsters.h"
 #include	"schedule.h"
-
 
 //=========================================================
 // Monster's Anim Events Go Here
@@ -121,17 +117,7 @@ int	CZombie :: Classify ( void )
 //=========================================================
 void CZombie :: SetYawSpeed ( void )
 {
-	int ys;
-
-	ys = 120;
-
-#if 0
-	switch ( m_Activity )
-	{
-	}
-#endif
-
-	pev->yaw_speed = ys;
+	pev->yaw_speed = 120;
 }
 
 int CZombie :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, float flDamage, int bitsDamageType )
@@ -149,6 +135,7 @@ int CZombie :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, floa
 	// HACK HACK -- until we fix this.
 	if ( IsAlive() )
 		PainSound();
+
 	return CBaseMonster::TakeDamage( pevInflictor, pevAttacker, flDamage, bitsDamageType );
 }
 
@@ -180,7 +167,6 @@ void CZombie :: AttackSound( void )
 	// Play a random attack sound
 	EMIT_SOUND_DYN ( ENT(pev), CHAN_VOICE, pAttackSounds[ RANDOM_LONG(0,ARRAYSIZE(pAttackSounds)-1) ], 1.0, ATTN_NORM, 0, 100 + RANDOM_LONG(-5,5) );
 }
-
 
 //=========================================================
 // HandleAnimEvent - catches the monster-specific messages
@@ -260,7 +246,7 @@ void CZombie :: HandleAnimEvent( MonsterEvent_t *pEvent )
 
 		default:
 			CBaseMonster::HandleAnimEvent( pEvent );
-			break;
+		break;
 	}
 }
 
@@ -318,19 +304,12 @@ void CZombie :: Precache()
 // AI Schedules Specific to this monster
 //=========================================================
 
-
-
 int CZombie::IgnoreConditions ( void )
 {
 	int iIgnore = CBaseMonster::IgnoreConditions();
 
 	if ((m_Activity == ACT_MELEE_ATTACK1) || (m_Activity == ACT_MELEE_ATTACK1))
 	{
-#if 0
-		if (pev->health < 20)
-			iIgnore |= (bits_COND_LIGHT_DAMAGE|bits_COND_HEAVY_DAMAGE);
-		else
-#endif			
 		if (m_flNextFlinch >= gpGlobals->time)
 			iIgnore |= (bits_COND_LIGHT_DAMAGE|bits_COND_HEAVY_DAMAGE);
 	}
@@ -342,5 +321,4 @@ int CZombie::IgnoreConditions ( void )
 	}
 
 	return iIgnore;
-	
 }
