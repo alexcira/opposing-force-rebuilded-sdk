@@ -588,6 +588,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="otis.cpp" />
+    <ClCompile Include="pipewrench.cpp" />
     <ClCompile Include="recruit.cpp" />
     <ClCompile Include="scientist_cleansuit.cpp" />
     <ClCompile Include="wpn_shared\hl_wpn_glock.cpp">

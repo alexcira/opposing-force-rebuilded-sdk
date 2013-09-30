@@ -29,6 +29,8 @@ void EV_FirePython( struct event_args_s *args  );
 void EV_FireGauss( struct event_args_s *args  );
 void EV_SpinGauss( struct event_args_s *args  );
 void EV_Crowbar( struct event_args_s *args );
+void EV_WrenchNormal( struct event_args_s *args  );
+void EV_WrenchLarge( struct event_args_s *args  );
 void EV_FireCrossbow( struct event_args_s *args );
 void EV_FireCrossbow2( struct event_args_s *args );
 void EV_FireRpg( struct event_args_s *args );
@@ -69,6 +71,8 @@ void Game_HookEvents( void )
 	gEngfuncs.pfnHookEvent( "events/gaussspin.sc",				EV_SpinGauss );
 	gEngfuncs.pfnHookEvent( "events/train.sc",					EV_TrainPitchAdjust );
 	gEngfuncs.pfnHookEvent( "events/crowbar.sc",				EV_Crowbar );
+	gEngfuncs.pfnHookEvent( "events/pipewrench.sc",				EV_WrenchNormal );
+	gEngfuncs.pfnHookEvent( "events/pipewrench2.sc",			EV_WrenchLarge );
 	gEngfuncs.pfnHookEvent( "events/crossbow1.sc",				EV_FireCrossbow );
 	gEngfuncs.pfnHookEvent( "events/crossbow2.sc",				EV_FireCrossbow2 );
 	gEngfuncs.pfnHookEvent( "events/rpg.sc",					EV_FireRpg );

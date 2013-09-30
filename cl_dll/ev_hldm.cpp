@@ -60,6 +60,8 @@ void EV_FirePython( struct event_args_s *args  );
 void EV_FireGauss( struct event_args_s *args  );
 void EV_SpinGauss( struct event_args_s *args  );
 void EV_Crowbar( struct event_args_s *args  );
+void EV_WrenchNormal( struct event_args_s *args  );
+void EV_WrenchLarge( struct event_args_s *args  );
 void EV_FireCrossbow( struct event_args_s *args  );
 void EV_FireCrossbow2( struct event_args_s *args  );
 void EV_FireRpg( struct event_args_s *args  );
@@ -1164,6 +1166,79 @@ void EV_Crowbar( event_args_t *args )
 }
 //======================
 //	   CROWBAR END 
+//======================
+
+//======================
+//	   WRENCH START
+//======================
+enum wrench_e {
+	WRENCH_IDLE1 = 0,
+	WRENCH_IDLE2,
+	WRENCH_IDLE3,
+	WRENCH_DRAW,
+	WRENCH_HOLSTER,
+	WRENCH_ATTACK1HIT,
+	WRENCH_ATTACK1MISS,
+	WRENCH_ATTACK2HIT,
+	WRENCH_ATTACK2MISS,
+	WRENCH_ATTACK3HIT,
+	WRENCH_ATTACK3MISS,
+	WRENCH_BIGWIND,
+	WRENCH_BIGHIT,
+	WRENCH_BIGMISS,
+	WRENCH_BIGLOOP,
+};
+
+
+//Only predict the miss sounds, hit sounds are still played 
+//server side, so players don't get the wrong idea.
+void EV_WrenchNormal( event_args_t *args )
+{
+	int idx;
+	vec3_t origin;
+	vec3_t angles;
+	vec3_t velocity;
+
+	idx = args->entindex;
+	VectorCopy( args->origin, origin );
+
+	if ( EV_IsLocal( idx ) )
+	{
+		gEngfuncs.pEventAPI->EV_WeaponAnimation( WRENCH_ATTACK1MISS, 1 );
+		switch( (g_iSwing++) % 3 )
+		{
+			case 0:
+				gEngfuncs.pEventAPI->EV_PlaySound( idx, origin, CHAN_WEAPON, "weapons/pwrench_miss2.wav", 1, ATTN_NORM, 0, PITCH_NORM); 
+				gEngfuncs.pEventAPI->EV_WeaponAnimation ( WRENCH_ATTACK1MISS, 1 ); break;
+			case 1:
+				gEngfuncs.pEventAPI->EV_PlaySound( idx, origin, CHAN_WEAPON, "weapons/pwrench_miss1.wav", 1, ATTN_NORM, 0, PITCH_NORM); 
+				gEngfuncs.pEventAPI->EV_WeaponAnimation ( WRENCH_ATTACK2MISS, 1 ); break;
+			case 2:
+				gEngfuncs.pEventAPI->EV_PlaySound( idx, origin, CHAN_WEAPON, "weapons/pwrench_miss2.wav", 1, ATTN_NORM, 0, PITCH_NORM); 
+				gEngfuncs.pEventAPI->EV_WeaponAnimation ( WRENCH_ATTACK3MISS, 1 ); break;
+		}
+	}
+}
+
+void EV_WrenchLarge( event_args_t *args )
+{
+	int idx;
+	vec3_t origin;
+	vec3_t angles;
+	vec3_t velocity;
+	idx = args->entindex;
+	VectorCopy( args->origin, origin );
+
+	if ( EV_IsLocal( idx ) )
+	{
+
+		gEngfuncs.pEventAPI->EV_PlaySound( idx, origin, CHAN_WEAPON, "weapons/pwrench_big_miss.wav", 1, ATTN_NORM, 0, PITCH_NORM);
+		gEngfuncs.pEventAPI->EV_WeaponAnimation( WRENCH_BIGMISS, 1 );
+		V_PunchAxis( 0, 5.0 );
+	}
+}
+//======================
+//	   WRENCH END 
 //======================
 
 //======================

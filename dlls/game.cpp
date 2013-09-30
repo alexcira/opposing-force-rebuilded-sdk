@@ -316,6 +316,11 @@ cvar_t	sk_sentry_health3 = {"sk_sentry_health3","0"};
 cvar_t	sk_plr_crowbar1 = {"sk_plr_crowbar1","0"};
 cvar_t	sk_plr_crowbar2 = {"sk_plr_crowbar2","0"};
 cvar_t	sk_plr_crowbar3 = {"sk_plr_crowbar3","0"};
+ 
+// Pipe Wrench whack
+cvar_t	sk_plr_pipewrench1 = {"sk_plr_pipewrench1","0"};
+cvar_t	sk_plr_pipewrench2 = {"sk_plr_pipewrench2","0"};
+cvar_t	sk_plr_pipewrench3 = {"sk_plr_pipewrench3","0"};
 
 // Glock Round
 cvar_t	sk_plr_9mm_bullet1 = {"sk_plr_9mm_bullet1","0"};
@@ -784,6 +789,11 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_plr_crowbar1 );// {"sk_plr_crowbar1","0"};
 	CVAR_REGISTER ( &sk_plr_crowbar2 );// {"sk_plr_crowbar2","0"};
 	CVAR_REGISTER ( &sk_plr_crowbar3 );// {"sk_plr_crowbar3","0"};
+
+	// Pipe Wrench whack
+	CVAR_REGISTER ( &sk_plr_pipewrench1 ); // {"sk_plr_pipewrench1","0"};
+	CVAR_REGISTER ( &sk_plr_pipewrench2 ); // {"sk_plr_pipewrench2","0"};
+	CVAR_REGISTER ( &sk_plr_pipewrench3 ); // {"sk_plr_pipewrench3","0"};
 
 	// Glock Round
 	CVAR_REGISTER ( &sk_plr_9mm_bullet1 );// {"sk_plr_9mm_bullet1","0"};

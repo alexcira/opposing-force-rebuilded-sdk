@@ -343,6 +343,9 @@ void W_Precache(void)
 	// crowbar
 	UTIL_PrecacheOtherWeapon( "weapon_crowbar" );
 
+	// wrench
+	UTIL_PrecacheOtherWeapon( "weapon_pipewrench" );
+
 	// glock
 	UTIL_PrecacheOtherWeapon( "weapon_9mmhandgun" );
 	UTIL_PrecacheOther( "ammo_9mmclip" );

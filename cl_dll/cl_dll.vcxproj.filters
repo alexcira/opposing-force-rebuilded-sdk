@@ -261,6 +261,9 @@
     <ClCompile Include="..\game_shared\voice_status.cpp">
       <Filter>Source Files\hl</Filter>
     </ClCompile>
+    <ClCompile Include="..\dlls\pipewrench.cpp">
+      <Filter>Source Files\hl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parsemsg.h">

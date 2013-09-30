@@ -64,20 +64,21 @@ public:
 
 #define WEAPON_NONE				0
 #define WEAPON_CROWBAR			1
-#define	WEAPON_GLOCK			2
-#define WEAPON_PYTHON			3
-#define WEAPON_MP5				4
-#define WEAPON_CHAINGUN			5
-#define WEAPON_CROSSBOW			6
-#define WEAPON_SHOTGUN			7
-#define WEAPON_RPG				8
-#define WEAPON_GAUSS			9
-#define WEAPON_EGON				10
-#define WEAPON_HORNETGUN		11
-#define WEAPON_HANDGRENADE		12
-#define WEAPON_TRIPMINE			13
-#define	WEAPON_SATCHEL			14
-#define	WEAPON_SNARK			15
+#define WEAPON_PIPEWRENCH		2
+#define	WEAPON_GLOCK			3
+#define WEAPON_PYTHON			4
+#define WEAPON_MP5				5
+#define WEAPON_CHAINGUN			6
+#define WEAPON_CROSSBOW			7
+#define WEAPON_SHOTGUN			8
+#define WEAPON_RPG				9
+#define WEAPON_GAUSS			10
+#define WEAPON_EGON				11
+#define WEAPON_HORNETGUN		12
+#define WEAPON_HANDGRENADE		13
+#define WEAPON_TRIPMINE			14
+#define	WEAPON_SATCHEL			15
+#define	WEAPON_SNARK			16
 
 #define WEAPON_ALLWEAPONS		(~(1<<WEAPON_SUIT))
 
@@ -91,6 +92,7 @@ public:
 
 // weapon weight factors (for auto-switching)   (-1 = noswitch)
 #define CROWBAR_WEIGHT		0
+#define PIPEWRENCH_WEIGHT	5
 #define GLOCK_WEIGHT		10
 #define PYTHON_WEIGHT		15
 #define MP5_WEIGHT			15
@@ -522,6 +524,43 @@ public:
 	}
 private:
 	unsigned short m_usCrowbar;
+};
+
+class CWrench : public CBasePlayerWeapon
+{
+public:
+	void Spawn( void );
+	void Precache( void );
+	int iItemSlot( void ) { return 1; }
+	void EXPORT SwingAgain( void );
+	void EXPORT Smack( void );
+	int GetItemInfo(ItemInfo *p);
+
+	void PrimaryAttack( void );
+	void SecondaryAttack( void );
+	void StartLargeSwing( void );
+	int Swing( int fFirst );
+	int LargeSwing( float flDamage );
+	float GetFullChargeTime( void );
+	BOOL Deploy( void );
+	void Holster( int skiplocal = 0 );
+	void WeaponIdle( void );
+	int m_iSwing;
+	int m_iHit;
+	TraceResult m_trHit;
+
+	virtual BOOL UseDecrement( void )
+	{ 
+#if defined( CLIENT_WEAPONS )
+		return TRUE;
+#else
+		return FALSE;
+#endif
+	}
+private:
+	BOOL m_fPrimaryFire;
+	unsigned short m_usWrench;
+	unsigned short m_usWrenchLarge;
 };
 
 class CPython : public CBasePlayerWeapon
