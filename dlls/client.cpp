@@ -706,6 +706,31 @@ void ClientPrecache( void )
 	PRECACHE_SOUND("player/pl_wade3.wav");
 	PRECACHE_SOUND("player/pl_wade4.wav");
 
+	PRECACHE_SOUND("player/pl_snow1.wav");		// snow step
+	PRECACHE_SOUND("player/pl_snow2.wav");
+	PRECACHE_SOUND("player/pl_snow3.wav");
+	PRECACHE_SOUND("player/pl_snow4.wav");
+
+	PRECACHE_SOUND("player/pl_organic1.wav");		// organic step
+	PRECACHE_SOUND("player/pl_organic2.wav");
+	PRECACHE_SOUND("player/pl_organic3.wav");
+	PRECACHE_SOUND("player/pl_organic4.wav");
+	
+	PRECACHE_SOUND("player/pl_wood1.wav");		// wood step
+	PRECACHE_SOUND("player/pl_wood2.wav");
+	PRECACHE_SOUND("player/pl_wood3.wav");
+	PRECACHE_SOUND("player/pl_wood4.wav");
+
+	PRECACHE_SOUND("player/pl_rug1.wav");		// rug step
+	PRECACHE_SOUND("player/pl_rug2.wav");
+	PRECACHE_SOUND("player/pl_rug3.wav");
+	PRECACHE_SOUND("player/pl_rug4.wav");
+
+	PRECACHE_SOUND("player/pl_gravel1.wav");		// gravel step
+	PRECACHE_SOUND("player/pl_gravel2.wav");
+	PRECACHE_SOUND("player/pl_gravel3.wav");
+	PRECACHE_SOUND("player/pl_gravel4.wav");
+
 	PRECACHE_SOUND("debris/wood1.wav");			// hit wood texture
 	PRECACHE_SOUND("debris/wood2.wav");
 	PRECACHE_SOUND("debris/wood3.wav");

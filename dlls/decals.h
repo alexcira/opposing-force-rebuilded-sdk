@@ -62,6 +62,17 @@ enum decal_e
 	DECAL_SMALLSCORCH3,	// Small scorch mark
 	DECAL_MOMMABIRTH,	// Big momma birth splatter
 	DECAL_MOMMASPLAT,
+	DECAL_SPORESPLAT1, // Spore Splat 1
+	DECAL_SPORESPLAT2, // Spore Splat 2 
+	DECAL_SPORESPLAT3, // Spore Splat 3
+	DECAL_COMPHOLE1, // Computer shot
+	DECAL_CONCHOLE1, // Concrete shot
+	DECAL_DIRTHOLE1, // Dirt shot
+	DECAL_METALHOLE1, // Metal shot
+	DECAL_SNOWHOLE1, // Snow shot
+	DECAL_TILEHOLE1, // Tile shot
+	DECAL_VENTHOLE1, // Vent shot
+	DECAL_WOODHOLE1, // Wood shot
 };
 
 typedef struct 

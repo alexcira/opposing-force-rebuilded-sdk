@@ -645,6 +645,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\dlls\weapons.h" />
     <ClInclude Include="parsemsg.h" />
     <ClInclude Include="ammo.h" />
     <ClInclude Include="ammohistory.h" />

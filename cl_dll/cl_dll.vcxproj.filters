@@ -395,5 +395,8 @@
     <ClInclude Include="wrect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\dlls\weapons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

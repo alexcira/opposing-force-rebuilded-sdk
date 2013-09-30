@@ -147,16 +147,109 @@ void SpawnBlood(Vector vecSpot, int bloodColor, float flDamage)
 	UTIL_BloodDrips( vecSpot, g_vecAttackDir, bloodColor, (int)flDamage );
 }
 
-
-int DamageDecal( CBaseEntity *pEntity, int bitsDamageType )
+int DamageDecal( CBaseEntity *pEntity, int bitsDamageType, Vector vecSrc, Vector vecEnd )
 {
+	char chTextureType;
+	char szbuffer[64];
+	const char *pTextureName;
+	float rgfl1[3];
+	float rgfl2[3];
+	chTextureType = 0;
+
+	if ( vecSrc && vecEnd )
+	{
+		if (pEntity && pEntity->Classify() != CLASS_NONE && pEntity->Classify() != CLASS_MACHINE)
+		{
+			// hit body
+			chTextureType = CHAR_TEX_FLESH;
+		}
+		else
+		{
+			vecSrc.CopyToArray(rgfl1);
+			vecEnd.CopyToArray(rgfl2);
+
+			if (pEntity)
+				pTextureName = TRACE_TEXTURE( ENT(pEntity->pev), rgfl1, rgfl2 );
+			else
+				pTextureName = TRACE_TEXTURE( ENT(0), rgfl1, rgfl2 );
+				
+			if ( pTextureName )
+			{
+				if (*pTextureName == '-' || *pTextureName == '+')
+					pTextureName += 2;
+
+				if (*pTextureName == '{' || *pTextureName == '!' || *pTextureName == '~' || *pTextureName == ' ')
+					pTextureName++;
+				strcpy(szbuffer, pTextureName);
+				szbuffer[CBTEXTURENAMEMAX - 1] = 0;
+				chTextureType = TEXTURETYPE_Find(szbuffer);	
+			}
+		}
+
+		if ( pEntity && pEntity->pev->rendermode != kRenderNormal && pEntity->pev->rendermode != kRenderTransAlpha )
+		{
+			return ( DECAL_GLASSBREAK1 + RANDOM_LONG(0,2));
+		}
+		else if ( chTextureType )
+		{
+			if ( chTextureType == CHAR_TEX_CONCRETE )
+			{
+				return ( DECAL_CONCHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_RUG )
+			{
+				return ( DECAL_CONCHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_METAL )
+			{
+				return ( DECAL_METALHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_DIRT )
+			{
+				return ( DECAL_DIRTHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_GRAVEL )
+			{
+				return ( DECAL_DIRTHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_VENT )
+			{
+				return ( DECAL_VENTHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_TILE )
+			{
+				return ( DECAL_TILEHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_SNOW )
+			{
+				return ( DECAL_SNOWHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_WOOD )
+			{
+				return ( DECAL_WOODHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_ORGANIC )
+			{
+				return ( DECAL_SPORESPLAT1 + RANDOM_LONG(0,2) );
+			}
+			else if ( chTextureType == CHAR_TEX_COMPUTER )
+			{
+				return ( DECAL_COMPHOLE1 );
+			}
+			else if ( chTextureType == CHAR_TEX_GLASS )
+			{
+				return ( DECAL_GLASSBREAK1 + RANDOM_LONG(0,2));
+			}
+		}
+	}
+
 	if ( !pEntity )
 		return (DECAL_GUNSHOT1 + RANDOM_LONG(0,4));
 	
 	return pEntity->DamageDecal( bitsDamageType );
 }
 
-void DecalGunshot( TraceResult *pTrace, int iBulletType )
+void DecalGunshot( TraceResult *pTrace, int iBulletType, Vector vecSrc, Vector vecEnd )
 {
 	// Is the entity valid
 	if ( !UTIL_IsValidEntity( pTrace->pHit ) )
@@ -171,23 +264,23 @@ void DecalGunshot( TraceResult *pTrace, int iBulletType )
 
 		switch( iBulletType )
 		{
-		case BULLET_PLAYER_9MM:
-		case BULLET_MONSTER_9MM:
-		case BULLET_PLAYER_MP5:
-		case BULLET_MONSTER_MP5:
-		case BULLET_PLAYER_BUCKSHOT:
-		case BULLET_PLAYER_357:
-		default:
-			// smoke and decal
-			UTIL_GunshotDecalTrace( pTrace, DamageDecal( pEntity, DMG_BULLET ) );
+			case BULLET_PLAYER_9MM:
+			case BULLET_MONSTER_9MM:
+			case BULLET_PLAYER_MP5:
+			case BULLET_MONSTER_MP5:
+			case BULLET_PLAYER_BUCKSHOT:
+			case BULLET_PLAYER_357:
+			default:
+				// smoke and decal
+				UTIL_GunshotDecalTrace( pTrace, DamageDecal( pEntity, DMG_BULLET, vecSrc, vecEnd ) );
 			break;
-		case BULLET_MONSTER_12MM:
-			// smoke and decal
-			UTIL_GunshotDecalTrace( pTrace, DamageDecal( pEntity, DMG_BULLET ) );
+			case BULLET_MONSTER_12MM:
+				// smoke and decal
+				UTIL_GunshotDecalTrace( pTrace, DamageDecal( pEntity, DMG_BULLET, vecSrc, vecEnd ) );
 			break;
-		case BULLET_PLAYER_CROWBAR:
-			// wall decal
-			UTIL_DecalTrace( pTrace, DamageDecal( pEntity, DMG_CLUB ) );
+			case BULLET_PLAYER_CROWBAR:
+				// wall decal
+				UTIL_DecalTrace( pTrace, DamageDecal( pEntity, DMG_CLUB, vecSrc, vecEnd ));
 			break;
 		}
 	}

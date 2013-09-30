@@ -417,8 +417,12 @@ public:
 	int MsgFunc_FlashBat(const char *pszName,  int iSize, void *pbuf );
 	
 private:
-	SpriteHandle_t m_SpriteHandle_t1;
-	SpriteHandle_t m_SpriteHandle_t2;
+	SpriteHandle_t m_hNV;
+	SpriteHandle_t m_hNV_A;
+	SpriteHandle_t m_hNV_B;
+	SpriteHandle_t m_hNV_INT;
+	SpriteHandle_t m_hSprite1;
+	SpriteHandle_t m_hSprite2;
 	SpriteHandle_t m_hBeam;
 	wrect_t *m_prc1;
 	wrect_t *m_prc2;

@@ -90,6 +90,17 @@ DLL_DECALLIST gDecals[] = {
 	{ "{smscorch3", 0 },	// DECAL_SMALLSCORCH3,	// Small scorch mark
 	{ "{mommablob", 0 },	// DECAL_MOMMABIRTH		// BM Birth spray
 	{ "{mommablob", 0 },	// DECAL_MOMMASPLAT		// BM Mortar spray?? need decal
+	{ "{spr_splt1", 0 },	// DECAL_SPORESPLAT1		// Spore Splat
+	{ "{spr_splt2", 0 },	// DECAL_SPORESPLAT2		// Spore Splat
+	{ "{spr_splt3", 0 },	// DECAL_SPORESPLAT3		// Spore Splat
+	{ "{hole_computer", 0 },	// DECAL_COMPHOLE1		// Computer hole
+	{ "{hole_concrete", 0 },	// DECAL_CONCHOLE1		// Concrete hole
+	{ "{hole_dirt", 0 },	// DECAL_DIRTHOLE1		// Dirt hole
+	{ "{hole_metal", 0 },	// DECAL_METALHOLE1		// Metal hole
+	{ "{hole_snow", 0 },	// DECAL_SNOWHOLE1		// Snow hole
+	{ "{hole_tile", 0 },	// DECAL_TILEHOLE1		// Tile hole
+	{ "{hole_vent", 0 },	// DECAL_VENTHOLE1		// Vent hole
+	{ "{hole_wood", 0 },	// DECAL_WOODHOLE1		// Wood hole
 };
 
 /*
