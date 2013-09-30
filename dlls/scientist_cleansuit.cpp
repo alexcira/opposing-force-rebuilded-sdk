@@ -625,6 +625,7 @@ void CCleansuitScientist :: TalkInit()
 	m_szFriends[2] = "monster_cleansuit_scientist";
 	m_szFriends[3] = "monster_sitting_cleansuit_scientist";
 	m_szFriends[4] = "monster_barney";
+	m_szFriends[5] = "monster_otis";
 
 	// scientists speach group names (group names are in sentences.txt)
 	m_szGrp[TLK_ANSWER]  =	"SC_ANSWER";

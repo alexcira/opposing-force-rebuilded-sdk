@@ -66,6 +66,11 @@ cvar_t	sk_barney_health1	= {"sk_barney_health1","0"};
 cvar_t	sk_barney_health2	= {"sk_barney_health2","0"};
 cvar_t	sk_barney_health3	= {"sk_barney_health3","0"};
 
+// Otis
+cvar_t	sk_otis_health1	= {"sk_otis_health1","0"};
+cvar_t	sk_otis_health2	= {"sk_otis_health2","0"};
+cvar_t	sk_otis_health3	= {"sk_otis_health3","0"};
+
 // Bullsquid
 cvar_t	sk_bullsquid_health1 = {"sk_bullsquid_health1","0"};
 cvar_t	sk_bullsquid_health2 = {"sk_bullsquid_health2","0"};
@@ -514,6 +519,11 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_barney_health1 );// {"sk_barney_health1","0"};
 	CVAR_REGISTER ( &sk_barney_health2 );// {"sk_barney_health2","0"};
 	CVAR_REGISTER ( &sk_barney_health3 );// {"sk_barney_health3","0"};
+
+	// Otis
+	CVAR_REGISTER ( &sk_otis_health1 );// {"sk_otis_health1","0"};
+	CVAR_REGISTER ( &sk_otis_health2 );// {"sk_otis_health2","0"};
+	CVAR_REGISTER ( &sk_otis_health3 );// {"sk_otis_health3","0"};
 
 	// Bullsquid
 	CVAR_REGISTER ( &sk_bullsquid_health1 );// {"sk_bullsquid_health1","0"};

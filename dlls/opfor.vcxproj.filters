@@ -323,6 +323,9 @@
     <ClCompile Include="hgrunt_ally.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="otis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h">
