@@ -329,6 +329,12 @@
     <ClCompile Include="zombie_barney.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="recruit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="drillsergeant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h">
