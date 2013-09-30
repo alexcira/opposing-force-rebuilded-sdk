@@ -266,7 +266,7 @@ cvar_t	sk_zombie_dmg_both_slash1 = {"sk_zombie_dmg_both_slash1","0"};
 cvar_t	sk_zombie_dmg_both_slash2 = {"sk_zombie_dmg_both_slash2","0"};
 cvar_t	sk_zombie_dmg_both_slash3 = {"sk_zombie_dmg_both_slash3","0"};
 
-// Zombie soldier
+// Zombie Soldier
 cvar_t	sk_zombie_soldier_health1 = {"sk_zombie_soldier_health1","0"};
 cvar_t	sk_zombie_soldier_health2 = {"sk_zombie_soldier_health2","0"};
 cvar_t	sk_zombie_soldier_health3 = {"sk_zombie_soldier_health3","0"};
@@ -278,6 +278,19 @@ cvar_t	sk_zombie_soldier_dmg_one_slash3 = {"sk_zombie_soldier_dmg_one_slash3","0
 cvar_t	sk_zombie_soldier_dmg_both_slash1 = {"sk_zombie_soldier_dmg_both_slash1","0"};
 cvar_t	sk_zombie_soldier_dmg_both_slash2 = {"sk_zombie_soldier_dmg_both_slash2","0"};
 cvar_t	sk_zombie_soldier_dmg_both_slash3 = {"sk_zombie_soldier_dmg_both_slash3","0"};
+
+// Zombie Barney
+cvar_t	sk_zombie_barney_health1 = {"sk_zombie_barney_health1","0"};
+cvar_t	sk_zombie_barney_health2 = {"sk_zombie_barney_health2","0"};
+cvar_t	sk_zombie_barney_health3 = {"sk_zombie_barney_health3","0"};
+
+cvar_t	sk_zombie_barney_dmg_one_slash1 = {"sk_zombie_barney_dmg_one_slash1","0"};
+cvar_t	sk_zombie_barney_dmg_one_slash2 = {"sk_zombie_barney_dmg_one_slash2","0"};
+cvar_t	sk_zombie_barney_dmg_one_slash3 = {"sk_zombie_barney_dmg_one_slash3","0"};
+
+cvar_t	sk_zombie_barney_dmg_both_slash1 = {"sk_zombie_barney_dmg_both_slash1","0"};
+cvar_t	sk_zombie_barney_dmg_both_slash2 = {"sk_zombie_barney_dmg_both_slash2","0"};
+cvar_t	sk_zombie_barney_dmg_both_slash3 = {"sk_zombie_barney_dmg_both_slash3","0"};
 
 //Turret
 cvar_t	sk_turret_health1 = {"sk_turret_health1","0"};
@@ -722,17 +735,30 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_zombie_dmg_both_slash3 );// {"sk_zombie_dmg_both_slash3","0"};
 
 	// Zombie Soldier
-	CVAR_REGISTER ( &sk_zombie_soldier_health1 );// {"sk_zombie_health1","0"};
-	CVAR_REGISTER ( &sk_zombie_soldier_health2 );// {"sk_zombie_health3","0"};
-	CVAR_REGISTER ( &sk_zombie_soldier_health3 );// {"sk_zombie_health3","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_health1 );// {"sk_zombie_soldier_health1","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_health2 );// {"sk_zombie_soldier_health3","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_health3 );// {"sk_zombie_soldier_health3","0"};
 
-	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash1 );// {"sk_zombie_dmg_one_slash1","0"};
-	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash2 );// {"sk_zombie_dmg_one_slash2","0"};
-	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash3 );// {"sk_zombie_dmg_one_slash3","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash1 );// {"sk_zombie_soldier_dmg_one_slash1","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash2 );// {"sk_zombie_soldier_dmg_one_slash2","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_one_slash3 );// {"sk_zombie_soldier_dmg_one_slash3","0"};
 
-	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash1 );// {"sk_zombie_dmg_both_slash1","0"};
-	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash2 );// {"sk_zombie_dmg_both_slash2","0"};
-	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash3 );// {"sk_zombie_dmg_both_slash3","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash1 );// {"sk_zombie_soldier_dmg_both_slash1","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash2 );// {"sk_zombie_soldier_dmg_both_slash2","0"};
+	CVAR_REGISTER ( &sk_zombie_soldier_dmg_both_slash3 );// {"sk_zombie_soldier_dmg_both_slash3","0"};
+
+	// Zombie Barney
+	CVAR_REGISTER ( &sk_zombie_barney_health1 );// {"sk_zombie_barney_health1","0"};
+	CVAR_REGISTER ( &sk_zombie_barney_health2 );// {"sk_zombie_barney_health3","0"};
+	CVAR_REGISTER ( &sk_zombie_barney_health3 );// {"sk_zombie_barney_health3","0"};
+
+	CVAR_REGISTER ( &sk_zombie_barney_dmg_one_slash1 );// {"sk_zombie_barney_dmg_one_slash1","0"};
+	CVAR_REGISTER ( &sk_zombie_barney_dmg_one_slash2 );// {"sk_zombie_barney_dmg_one_slash2","0"};
+	CVAR_REGISTER ( &sk_zombie_barney_dmg_one_slash3 );// {"sk_zombie_barney_dmg_one_slash3","0"};
+
+	CVAR_REGISTER ( &sk_zombie_barney_dmg_both_slash1 );// {"sk_zombie_barney_dmg_both_slash1","0"};
+	CVAR_REGISTER ( &sk_zombie_barney_dmg_both_slash2 );// {"sk_zombie_barney_dmg_both_slash2","0"};
+	CVAR_REGISTER ( &sk_zombie_barney_dmg_both_slash3 );// {"sk_zombie_barney_dmg_both_slash3","0"};
 
 	//Turret
 	CVAR_REGISTER ( &sk_turret_health1 );// {"sk_turret_health1","0"};
