@@ -297,21 +297,17 @@ cvar_t	sk_turret_health1 = {"sk_turret_health1","0"};
 cvar_t	sk_turret_health2 = {"sk_turret_health2","0"};
 cvar_t	sk_turret_health3 = {"sk_turret_health3","0"};
 
-
 // MiniTurret
 cvar_t	sk_miniturret_health1 = {"sk_miniturret_health1","0"};
 cvar_t	sk_miniturret_health2 = {"sk_miniturret_health2","0"};
 cvar_t	sk_miniturret_health3 = {"sk_miniturret_health3","0"};
-
 
 // Sentry Turret
 cvar_t	sk_sentry_health1 = {"sk_sentry_health1","0"};
 cvar_t	sk_sentry_health2 = {"sk_sentry_health2","0"};
 cvar_t	sk_sentry_health3 = {"sk_sentry_health3","0"};
 
-
 // PLAYER WEAPONS
-
 // Crowbar whack
 cvar_t	sk_plr_crowbar1 = {"sk_plr_crowbar1","0"};
 cvar_t	sk_plr_crowbar2 = {"sk_plr_crowbar2","0"};
@@ -337,18 +333,15 @@ cvar_t	sk_plr_9mmAR_bullet1 = {"sk_plr_9mmAR_bullet1","0"};
 cvar_t	sk_plr_9mmAR_bullet2 = {"sk_plr_9mmAR_bullet2","0"};
 cvar_t	sk_plr_9mmAR_bullet3 = {"sk_plr_9mmAR_bullet3","0"};
 
-
 // M203 grenade
 cvar_t	sk_plr_9mmAR_grenade1 = {"sk_plr_9mmAR_grenade1","0"};
 cvar_t	sk_plr_9mmAR_grenade2 = {"sk_plr_9mmAR_grenade2","0"};
 cvar_t	sk_plr_9mmAR_grenade3 = {"sk_plr_9mmAR_grenade3","0"};
 
-
 // Shotgun buckshot
 cvar_t	sk_plr_buckshot1 = {"sk_plr_buckshot1","0"};
 cvar_t	sk_plr_buckshot2 = {"sk_plr_buckshot2","0"};
 cvar_t	sk_plr_buckshot3 = {"sk_plr_buckshot3","0"};
-
 
 // Crossbow
 cvar_t	sk_plr_xbow_bolt_client1 = {"sk_plr_xbow_bolt_client1","0"};
@@ -359,18 +352,15 @@ cvar_t	sk_plr_xbow_bolt_monster1 = {"sk_plr_xbow_bolt_monster1","0"};
 cvar_t	sk_plr_xbow_bolt_monster2 = {"sk_plr_xbow_bolt_monster2","0"};
 cvar_t	sk_plr_xbow_bolt_monster3 = {"sk_plr_xbow_bolt_monster3","0"};
 
-
 // RPG
 cvar_t	sk_plr_rpg1 = {"sk_plr_rpg1","0"};
 cvar_t	sk_plr_rpg2 = {"sk_plr_rpg2","0"};
 cvar_t	sk_plr_rpg3 = {"sk_plr_rpg3","0"};
 
-
 // Zero Point Generator
 cvar_t	sk_plr_gauss1 = {"sk_plr_gauss1","0"};
 cvar_t	sk_plr_gauss2 = {"sk_plr_gauss2","0"};
 cvar_t	sk_plr_gauss3 = {"sk_plr_gauss3","0"};
-
 
 // Tau Cannon
 cvar_t	sk_plr_egon_narrow1 = {"sk_plr_egon_narrow1","0"};
@@ -381,24 +371,30 @@ cvar_t	sk_plr_egon_wide1 = {"sk_plr_egon_wide1","0"};
 cvar_t	sk_plr_egon_wide2 = {"sk_plr_egon_wide2","0"};
 cvar_t	sk_plr_egon_wide3 = {"sk_plr_egon_wide3","0"};
 
-
 // Hand Grendade
 cvar_t	sk_plr_hand_grenade1 = {"sk_plr_hand_grenade1","0"};
 cvar_t	sk_plr_hand_grenade2 = {"sk_plr_hand_grenade2","0"};
 cvar_t	sk_plr_hand_grenade3 = {"sk_plr_hand_grenade3","0"};
-
 
 // Satchel Charge
 cvar_t	sk_plr_satchel1	= {"sk_plr_satchel1","0"};
 cvar_t	sk_plr_satchel2	= {"sk_plr_satchel2","0"};
 cvar_t	sk_plr_satchel3	= {"sk_plr_satchel3","0"};
 
-
 // Tripmine
 cvar_t	sk_plr_tripmine1 = {"sk_plr_tripmine1","0"};
 cvar_t	sk_plr_tripmine2 = {"sk_plr_tripmine2","0"};
 cvar_t	sk_plr_tripmine3 = {"sk_plr_tripmine3","0"};
 
+// M249
+cvar_t	sk_plr_556_bullet1 = {"sk_plr_556_bullet1","0"};
+cvar_t	sk_plr_556_bullet2 = {"sk_plr_556_bullet2","0"};
+cvar_t	sk_plr_556_bullet3 = {"sk_plr_556_bullet3","0"};
+
+// Desert Eagle
+cvar_t	sk_plr_eagle1 = {"sk_plr_eagle1","0"};
+cvar_t	sk_plr_eagle2 = {"sk_plr_eagle2","0"};
+cvar_t	sk_plr_eagle3 = {"sk_plr_eagle3","0"};
 
 // WORLD WEAPONS
 cvar_t	sk_12mm_bullet1 = {"sk_12mm_bullet1","0"};
@@ -413,6 +409,17 @@ cvar_t	sk_9mm_bullet1 = {"sk_9mm_bullet1","0"};
 cvar_t	sk_9mm_bullet2 = {"sk_9mm_bullet2","0"};
 cvar_t	sk_9mm_bullet3 = {"sk_9mm_bullet3","0"};
 
+cvar_t	sk_eagle_bullet1 = {"sk_eagle_bullet1","0"};
+cvar_t	sk_eagle_bullet2 = {"sk_eagle_bullet2","0"};
+cvar_t	sk_eagle_bullet3 = {"sk_eagle_bullet3","0"};
+
+cvar_t	sk_buckshot1 = {"sk_buckshot1","0"};
+cvar_t	sk_buckshot2 = {"sk_buckshot2","0"};
+cvar_t	sk_buckshot3 = {"sk_buckshot3","0"};
+
+cvar_t	sk_556_bullet1 = {"sk_556_bullet1","0"};
+cvar_t	sk_556_bullet2 = {"sk_556_bullet2","0"};
+cvar_t	sk_556_bullet3 = {"sk_556_bullet3","0"};
 
 // HORNET
 cvar_t	sk_hornet_dmg1 = {"sk_hornet_dmg1","0"};
@@ -832,65 +839,79 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_plr_xbow_bolt_client2 );// {"sk_plr_xbow_bolt2","0"};
 	CVAR_REGISTER ( &sk_plr_xbow_bolt_client3 );// {"sk_plr_xbow_bolt3","0"};
 
-
 	// RPG
 	CVAR_REGISTER ( &sk_plr_rpg1 );// {"sk_plr_rpg1","0"};
 	CVAR_REGISTER ( &sk_plr_rpg2 );// {"sk_plr_rpg2","0"};
 	CVAR_REGISTER ( &sk_plr_rpg3 );// {"sk_plr_rpg3","0"};
-
 
 	// Gauss Gun
 	CVAR_REGISTER ( &sk_plr_gauss1 );// {"sk_plr_gauss1","0"};
 	CVAR_REGISTER ( &sk_plr_gauss2 );// {"sk_plr_gauss2","0"};
 	CVAR_REGISTER ( &sk_plr_gauss3 );// {"sk_plr_gauss3","0"};
 
-
 	// Egon Gun
-	CVAR_REGISTER ( &sk_plr_egon_narrow1 );// {"sk_plr_egon_narrow1","0"};
-	CVAR_REGISTER ( &sk_plr_egon_narrow2 );// {"sk_plr_egon_narrow2","0"};
-	CVAR_REGISTER ( &sk_plr_egon_narrow3 );// {"sk_plr_egon_narrow3","0"};
+	CVAR_REGISTER ( &sk_plr_egon_narrow1 );
+	CVAR_REGISTER ( &sk_plr_egon_narrow2 );
+	CVAR_REGISTER ( &sk_plr_egon_narrow3 );
 
-	CVAR_REGISTER ( &sk_plr_egon_wide1 );// {"sk_plr_egon_wide1","0"};
-	CVAR_REGISTER ( &sk_plr_egon_wide2 );// {"sk_plr_egon_wide2","0"};
-	CVAR_REGISTER ( &sk_plr_egon_wide3 );// {"sk_plr_egon_wide3","0"};
-
+	CVAR_REGISTER ( &sk_plr_egon_wide1 );
+	CVAR_REGISTER ( &sk_plr_egon_wide2 );
+	CVAR_REGISTER ( &sk_plr_egon_wide3 );
 
 	// Hand Grendade
-	CVAR_REGISTER ( &sk_plr_hand_grenade1 );// {"sk_plr_hand_grenade1","0"};
-	CVAR_REGISTER ( &sk_plr_hand_grenade2 );// {"sk_plr_hand_grenade2","0"};
-	CVAR_REGISTER ( &sk_plr_hand_grenade3 );// {"sk_plr_hand_grenade3","0"};
-
+	CVAR_REGISTER ( &sk_plr_hand_grenade1 );
+	CVAR_REGISTER ( &sk_plr_hand_grenade2 );
+	CVAR_REGISTER ( &sk_plr_hand_grenade3 );
 
 	// Satchel Charge
-	CVAR_REGISTER ( &sk_plr_satchel1 );// {"sk_plr_satchel1","0"};
-	CVAR_REGISTER ( &sk_plr_satchel2 );// {"sk_plr_satchel2","0"};
-	CVAR_REGISTER ( &sk_plr_satchel3 );// {"sk_plr_satchel3","0"};
-
+	CVAR_REGISTER ( &sk_plr_satchel1 );
+	CVAR_REGISTER ( &sk_plr_satchel2 );
+	CVAR_REGISTER ( &sk_plr_satchel3 );
 
 	// Tripmine
-	CVAR_REGISTER ( &sk_plr_tripmine1 );// {"sk_plr_tripmine1","0"};
-	CVAR_REGISTER ( &sk_plr_tripmine2 );// {"sk_plr_tripmine2","0"};
-	CVAR_REGISTER ( &sk_plr_tripmine3 );// {"sk_plr_tripmine3","0"};
+	CVAR_REGISTER ( &sk_plr_tripmine1 );
+	CVAR_REGISTER ( &sk_plr_tripmine2 );
+	CVAR_REGISTER ( &sk_plr_tripmine3 );
 
+	// M249
+	CVAR_REGISTER ( &sk_plr_556_bullet1 );
+	CVAR_REGISTER ( &sk_plr_556_bullet2 );
+	CVAR_REGISTER ( &sk_plr_556_bullet3 );
+
+	// Desert Eagle
+	CVAR_REGISTER ( &sk_plr_eagle1 );
+	CVAR_REGISTER ( &sk_plr_eagle2 );
+	CVAR_REGISTER ( &sk_plr_eagle3 );
 
 	// WORLD WEAPONS
-	CVAR_REGISTER ( &sk_12mm_bullet1 );// {"sk_12mm_bullet1","0"};
-	CVAR_REGISTER ( &sk_12mm_bullet2 );// {"sk_12mm_bullet2","0"};
-	CVAR_REGISTER ( &sk_12mm_bullet3 );// {"sk_12mm_bullet3","0"};
+	CVAR_REGISTER ( &sk_12mm_bullet1 );
+	CVAR_REGISTER ( &sk_12mm_bullet2 );
+	CVAR_REGISTER ( &sk_12mm_bullet3 );
 
-	CVAR_REGISTER ( &sk_9mmAR_bullet1 );// {"sk_9mm_bullet1","0"};
-	CVAR_REGISTER ( &sk_9mmAR_bullet2 );// {"sk_9mm_bullet1","0"};
-	CVAR_REGISTER ( &sk_9mmAR_bullet3 );// {"sk_9mm_bullet1","0"};
+	CVAR_REGISTER ( &sk_9mmAR_bullet1 );
+	CVAR_REGISTER ( &sk_9mmAR_bullet2 );
+	CVAR_REGISTER ( &sk_9mmAR_bullet3 );
 
-	CVAR_REGISTER ( &sk_9mm_bullet1 );// {"sk_9mm_bullet1","0"};
-	CVAR_REGISTER ( &sk_9mm_bullet2 );// {"sk_9mm_bullet2","0"};
-	CVAR_REGISTER ( &sk_9mm_bullet3 );// {"sk_9mm_bullet3","0"};
+	CVAR_REGISTER ( &sk_9mm_bullet1 );
+	CVAR_REGISTER ( &sk_9mm_bullet2 );
+	CVAR_REGISTER ( &sk_9mm_bullet3 );
 
+	CVAR_REGISTER ( &sk_eagle_bullet1 );
+	CVAR_REGISTER ( &sk_eagle_bullet2 );
+	CVAR_REGISTER ( &sk_eagle_bullet3 );
+
+	CVAR_REGISTER ( &sk_buckshot1 );
+	CVAR_REGISTER ( &sk_buckshot2 );
+	CVAR_REGISTER ( &sk_buckshot3 );
+
+	CVAR_REGISTER ( &sk_556_bullet1 );
+	CVAR_REGISTER ( &sk_556_bullet2 );
+	CVAR_REGISTER ( &sk_556_bullet3 );
 
 	// HORNET
-	CVAR_REGISTER ( &sk_hornet_dmg1 );// {"sk_hornet_dmg1","0"};
-	CVAR_REGISTER ( &sk_hornet_dmg2 );// {"sk_hornet_dmg2","0"};
-	CVAR_REGISTER ( &sk_hornet_dmg3 );// {"sk_hornet_dmg3","0"};
+	CVAR_REGISTER ( &sk_hornet_dmg1 );
+	CVAR_REGISTER ( &sk_hornet_dmg2 );
+	CVAR_REGISTER ( &sk_hornet_dmg3 );
 
 	// HEALTH/SUIT CHARGE DISTRIBUTION
 	CVAR_REGISTER ( &sk_suitcharger1 );
@@ -913,7 +934,7 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_scientist_heal2 );
 	CVAR_REGISTER ( &sk_scientist_heal3 );
 
-// monster damage adjusters
+	// monster damage adjusters
 	CVAR_REGISTER ( &sk_monster_head1 );
 	CVAR_REGISTER ( &sk_monster_head2 );
 	CVAR_REGISTER ( &sk_monster_head3 );
@@ -934,7 +955,7 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_monster_leg2 );
 	CVAR_REGISTER ( &sk_monster_leg3 );
 
-// player damage adjusters
+	// player damage adjusters
 	CVAR_REGISTER ( &sk_player_head1 );
 	CVAR_REGISTER ( &sk_player_head2 );
 	CVAR_REGISTER ( &sk_player_head3 );
@@ -954,7 +975,7 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_player_leg1 );
 	CVAR_REGISTER ( &sk_player_leg2 );
 	CVAR_REGISTER ( &sk_player_leg3 );
-// END REGISTER CVARS FOR SKILL LEVEL STUFF
+	// END REGISTER CVARS FOR SKILL LEVEL STUFF
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
 	SERVER_COMMAND( "exec skillopfor.cfg\n" );

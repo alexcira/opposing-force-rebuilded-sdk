@@ -54,8 +54,8 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">.\Profile_opfor\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">.\Profile_opfor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\debug_opfor\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\debug_opfor\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug_opfor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug_opfor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -181,7 +181,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\debug_opfor/opfor.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Debug_opfor/opfor.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -191,10 +191,10 @@
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;QUIVER;VOXEL;QUAKE2;VALVE_DLL;CLIENT_WEAPONS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>.\debug_opfor/opfor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\debug_opfor/</AssemblerListingLocation>
-      <ObjectFileName>.\debug_opfor/</ObjectFileName>
-      <ProgramDataBaseFileName>.\debug_opfor/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>.\Debug_opfor/opfor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug_opfor/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug_opfor/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug_opfor/</ProgramDataBaseFileName>
       <BrowseInformation>
       </BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
@@ -207,21 +207,21 @@
       <AdditionalIncludeDirectories>..\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\debug_opfor/opfor.dll</OutputFile>
+      <OutputFile>.\Debug_opfor/opfor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\opfor.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\debug_opfor/opfor.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\Debug_opfor/opfor.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>.\Debug\opfor.lib</ImportLibrary>
+      <ImportLibrary>.\Debug_opfor\opfor.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\debug_opfor/opfor.bsc</OutputFile>
+      <OutputFile>.\Debug_opfor/opfor.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -483,9 +483,7 @@ int PM_MapTextureTypeStepType(char chTextureType)
 		case CHAR_TEX_SLOSH: return STEP_SLOSH;
 		case CHAR_TEX_SNOW: return STEP_SNOW;
 		case CHAR_TEX_ORGANIC: return STEP_ORGANIC;
-		case CHAR_TEX_RUG: return STEP_RUG;
 		case CHAR_TEX_WOOD: return STEP_WOOD;
-		case CHAR_TEX_GRAVEL: return STEP_GRAVEL;
 	}
 }
 

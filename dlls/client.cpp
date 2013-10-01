@@ -721,16 +721,6 @@ void ClientPrecache( void )
 	PRECACHE_SOUND("player/pl_wood3.wav");
 	PRECACHE_SOUND("player/pl_wood4.wav");
 
-	PRECACHE_SOUND("player/pl_rug1.wav");		// rug step
-	PRECACHE_SOUND("player/pl_rug2.wav");
-	PRECACHE_SOUND("player/pl_rug3.wav");
-	PRECACHE_SOUND("player/pl_rug4.wav");
-
-	PRECACHE_SOUND("player/pl_gravel1.wav");		// gravel step
-	PRECACHE_SOUND("player/pl_gravel2.wav");
-	PRECACHE_SOUND("player/pl_gravel3.wav");
-	PRECACHE_SOUND("player/pl_gravel4.wav");
-
 	PRECACHE_SOUND("debris/wood1.wav");			// hit wood texture
 	PRECACHE_SOUND("debris/wood2.wav");
 	PRECACHE_SOUND("debris/wood3.wav");

@@ -20,7 +20,7 @@ struct skilldata_t
 {
 	int iSkillLevel; // game skill level
 
-// Monster Health & Damage
+	// Monster Health & Damage
 	float agruntHealth;
 	float agruntDmgPunch;
 
@@ -99,8 +99,7 @@ struct skilldata_t
 	float miniturretHealth;
 	float sentryHealth;
 
-
-// Player Weapons
+	// Player Weapons
 	float plrDmgCrowbar;
 	float plrDmgWrench;
 	float plrDmg9MM;
@@ -118,28 +117,33 @@ struct skilldata_t
 	float plrDmgHandGrenade;
 	float plrDmgSatchel;
 	float plrDmgTripmine;
+	float plrDmgEagle;
+	float plrDmgM249;
 	
-// weapons shared by monsters
+	// weapons shared by monsters
 	float monDmg9MM;
 	float monDmgMP5;
 	float monDmg12MM;
+	float monDmgEagle;
+	float monDmgM249;
+	float monDmgBuckshot;
 	float monDmgHornet;
 
-// health/suit charge
+	// health/suit charge
 	float suitchargerCapacity;
 	float batteryCapacity;
 	float healthchargerCapacity;
 	float healthkitCapacity;
 	float scientistHeal;
 
-// monster damage adj
+	// monster damage adj
 	float monHead;
 	float monChest;
 	float monStomach;
 	float monLeg;
 	float monArm;
 
-// player damage adj
+	// player damage adj
 	float plrHead;
 	float plrChest;
 	float plrStomach;

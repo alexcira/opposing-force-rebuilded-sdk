@@ -1,4 +1,4 @@
-LIBRARY hlgl
+LIBRARY opforgl
 EXPORTS
 	GiveFnptrsToDll			@1
 	GetEntityInterfaces		@2

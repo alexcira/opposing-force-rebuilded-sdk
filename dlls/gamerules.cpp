@@ -238,8 +238,7 @@ void CGameRules::RefreshSkillData ( void )
 	// Sentry Turret
 	gSkillData.sentryHealth = GetSkillCvar( "sk_sentry_health");
 
-// PLAYER WEAPONS
-
+	// PLAYER WEAPONS
 	// Crowbar whack
 	gSkillData.plrDmgCrowbar = GetSkillCvar( "sk_plr_crowbar");
 
@@ -284,10 +283,20 @@ void CGameRules::RefreshSkillData ( void )
 	// Tripmine
 	gSkillData.plrDmgTripmine = GetSkillCvar( "sk_plr_tripmine");
 
+	// M249
+	gSkillData.monDmgM249 = GetSkillCvar( "sk_plr_556_bullet");
+
+	// Desert Eagle
+	gSkillData.monDmgEagle = GetSkillCvar( "sk_plr_eagle");
+
 	// MONSTER WEAPONS
 	gSkillData.monDmg12MM = GetSkillCvar( "sk_12mm_bullet");
 	gSkillData.monDmgMP5 = GetSkillCvar ("sk_9mmAR_bullet" );
 	gSkillData.monDmg9MM = GetSkillCvar( "sk_9mm_bullet");
+
+	gSkillData.monDmgM249 = GetSkillCvar( "sk_556_bullet");
+	gSkillData.monDmgBuckshot = GetSkillCvar( "sk_buckshot");
+	gSkillData.monDmgEagle = GetSkillCvar( "sk_eagle_bullet");
 
 	// MONSTER HORNET
 	gSkillData.monDmgHornet = GetSkillCvar( "sk_hornet_dmg");

@@ -196,19 +196,11 @@ int DamageDecal( CBaseEntity *pEntity, int bitsDamageType, Vector vecSrc, Vector
 			{
 				return ( DECAL_CONCHOLE1 );
 			}
-			else if ( chTextureType == CHAR_TEX_RUG )
-			{
-				return ( DECAL_CONCHOLE1 );
-			}
 			else if ( chTextureType == CHAR_TEX_METAL )
 			{
 				return ( DECAL_METALHOLE1 );
 			}
 			else if ( chTextureType == CHAR_TEX_DIRT )
-			{
-				return ( DECAL_DIRTHOLE1 );
-			}
-			else if ( chTextureType == CHAR_TEX_GRAVEL )
 			{
 				return ( DECAL_DIRTHOLE1 );
 			}
@@ -269,6 +261,11 @@ void DecalGunshot( TraceResult *pTrace, int iBulletType, Vector vecSrc, Vector v
 			case BULLET_PLAYER_MP5:
 			case BULLET_MONSTER_MP5:
 			case BULLET_PLAYER_BUCKSHOT:
+			case BULLET_MONSTER_BUCKSHOT:
+			case BULLET_PLAYER_M249:
+			case BULLET_MONSTER_M249:
+			case BULLET_PLAYER_EAGLE:
+			case BULLET_MONSTER_EAGLE:
 			case BULLET_PLAYER_357:
 			default:
 				// smoke and decal
