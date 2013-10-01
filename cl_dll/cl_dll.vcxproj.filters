@@ -264,6 +264,9 @@
     <ClCompile Include="..\dlls\pipewrench.cpp">
       <Filter>Source Files\hl</Filter>
     </ClCompile>
+    <ClCompile Include="..\dlls\sniperrifle.cpp">
+      <Filter>Source Files\hl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parsemsg.h">

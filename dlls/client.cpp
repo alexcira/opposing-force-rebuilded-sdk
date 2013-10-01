@@ -1562,8 +1562,8 @@ void UpdateClientData ( const struct edict_s *ent, int sendweapons, struct clien
 			cd->ammo_rockets	= pl->ammo_rockets;
 			cd->ammo_cells		= pl->ammo_uranium;
 			cd->vuser2.x		= pl->ammo_hornets;
+			cd->vuser1.x		= pl->ammo_762;
 			
-
 			if ( pl->m_pActiveItem )
 			{
 				CBasePlayerWeapon *gun;

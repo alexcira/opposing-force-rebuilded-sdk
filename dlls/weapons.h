@@ -79,12 +79,13 @@ public:
 #define WEAPON_TRIPMINE			14
 #define	WEAPON_SATCHEL			15
 #define	WEAPON_SNARK			16
+#define WEAPON_M40A1			17
 
 #define WEAPON_ALLWEAPONS		(~(1<<WEAPON_SUIT))
 
 #define WEAPON_SUIT				31	// ?????
 
-#define MAX_WEAPONS			32
+#define MAX_WEAPONS			64
 
 
 #define MAX_NORMAL_BATTERY	100
@@ -106,7 +107,7 @@ public:
 #define SNARK_WEIGHT		5
 #define SATCHEL_WEIGHT		-10
 #define TRIPMINE_WEIGHT		-10
-
+#define M40A1_WEIGHT		25
 
 // weapon clip/carry ammo capacities
 #define URANIUM_MAX_CARRY		100
@@ -121,6 +122,8 @@ public:
 #define SNARK_MAX_CARRY			15
 #define HORNET_MAX_CARRY		8
 #define M203_GRENADE_MAX_CARRY	10
+#define _762_MAX_CARRY			15
+#define M40A1_MAX_CLIP			5
 
 // the maximum amount of ammo each weapon's clip can hold
 #define WEAPON_NOCLIP			-1
@@ -133,6 +136,7 @@ public:
 #define SHOTGUN_MAX_CLIP		8
 #define CROSSBOW_MAX_CLIP		5
 #define RPG_MAX_CLIP			1
+#define M40A1_MAX_CLIP			5
 #define GAUSS_MAX_CLIP			WEAPON_NOCLIP
 #define EGON_MAX_CLIP			WEAPON_NOCLIP
 #define HORNETGUN_MAX_CLIP		WEAPON_NOCLIP
@@ -158,6 +162,7 @@ public:
 #define TRIPMINE_DEFAULT_GIVE		1
 #define SNARK_DEFAULT_GIVE			5
 #define HIVEHAND_DEFAULT_GIVE		8
+#define M40A1_DEFAULT_GIVE			5
 
 // The amount of ammo given to a player by an ammo item.
 #define AMMO_URANIUMBOX_GIVE	20
@@ -171,6 +176,7 @@ public:
 #define AMMO_RPGCLIP_GIVE		RPG_MAX_CLIP
 #define AMMO_URANIUMBOX_GIVE	20
 #define AMMO_SNARKBOX_GIVE		5
+#define AMMO_762_GIVE			5
 
 // bullet types
 typedef	enum
@@ -180,6 +186,7 @@ typedef	enum
 	BULLET_PLAYER_MP5, // mp5
 	BULLET_PLAYER_M249,
 	BULLET_PLAYER_357, // python
+	BULLET_PLAYER_762, // sniper
 	BULLET_PLAYER_BUCKSHOT, // shotgun
 	BULLET_PLAYER_CROWBAR, // crowbar swipe
 	BULLET_PLAYER_EAGLE,
@@ -189,6 +196,7 @@ typedef	enum
 	BULLET_MONSTER_MP5,
 	BULLET_MONSTER_12MM,
 	BULLET_MONSTER_M249,
+	BULLET_MONSTER_762,
 	BULLET_MONSTER_EAGLE,
 } Bullet;
 
@@ -780,6 +788,37 @@ public:
 	int m_iTrail;
 	float m_flIgniteTime;
 	CRpg *m_pLauncher;// pointer back to the launcher that fired me. 
+};
+
+class CSniperRifle : public CBasePlayerWeapon
+{
+public:
+	void Spawn( void );
+	void Precache( void );
+	int iItemSlot( void ) { return 6; }
+	int GetItemInfo(ItemInfo *p);
+	int AddToPlayer( CBasePlayer *pPlayer );
+	void PrimaryAttack( void );
+	void SecondaryAttack( void );
+	BOOL Deploy( void );
+	void Holster( int skiplocal = 0 );
+	void Reload( void );
+	void WeaponIdle( void );
+	float m_flSoundDelay;
+
+	BOOL m_fInZoom;// don't save this. 
+
+	virtual BOOL UseDecrement( void )
+	{ 
+	#if defined( CLIENT_WEAPONS )
+			return TRUE;
+	#else
+			return FALSE;
+	#endif
+	}
+
+private:
+	unsigned short m_usSniper;
 };
 
 class CGauss : public CBasePlayerWeapon

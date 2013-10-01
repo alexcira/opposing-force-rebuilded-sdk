@@ -987,19 +987,6 @@ int CBaseMonster :: DeadTakeDamage( entvars_t *pevInflictor, entvars_t *pevAttac
 		}
 	}
 
-#if 0// turn this back on when the bounding box issues are resolved.
-
-	pev->flags &= ~FL_ONGROUND;
-	pev->origin.z += 1;
-	
-	// let the damage scoot the corpse around a bit.
-	if ( !FNullEnt(pevInflictor) && (pevAttacker->solid != SOLID_TRIGGER) )
-	{
-		pev->velocity = pev->velocity + vecDir * -DamageForce( flDamage );
-	}
-
-#endif
-
 	// kill the corpse if enough damage was done to destroy the corpse and the damage is of a type that is allowed to destroy the corpse.
 	if ( bitsDamageType & DMG_GIB_CORPSE )
 	{
@@ -1419,19 +1406,22 @@ void CBaseEntity::FireBullets(ULONG cShots, Vector vecSrc, Vector vecDirShooting
 				tracer = 1;
 			switch( iBulletType )
 			{
-			case BULLET_MONSTER_MP5:
-			case BULLET_MONSTER_9MM:
-			case BULLET_MONSTER_12MM:
-			default:
-				MESSAGE_BEGIN( MSG_PAS, SVC_TEMPENTITY, vecTracerSrc );
-					WRITE_BYTE( TE_TRACER );
-					WRITE_COORD( vecTracerSrc.x );
-					WRITE_COORD( vecTracerSrc.y );
-					WRITE_COORD( vecTracerSrc.z );
-					WRITE_COORD( tr.vecEndPos.x );
-					WRITE_COORD( tr.vecEndPos.y );
-					WRITE_COORD( tr.vecEndPos.z );
-				MESSAGE_END();
+				case BULLET_MONSTER_MP5:
+				case BULLET_MONSTER_9MM:
+				case BULLET_MONSTER_12MM:
+				case BULLET_MONSTER_EAGLE:
+				case BULLET_MONSTER_762:
+
+				default:
+					MESSAGE_BEGIN( MSG_PAS, SVC_TEMPENTITY, vecTracerSrc );
+						WRITE_BYTE( TE_TRACER );
+						WRITE_COORD( vecTracerSrc.x );
+						WRITE_COORD( vecTracerSrc.y );
+						WRITE_COORD( vecTracerSrc.z );
+						WRITE_COORD( tr.vecEndPos.x );
+						WRITE_COORD( tr.vecEndPos.y );
+						WRITE_COORD( tr.vecEndPos.z );
+					MESSAGE_END();
 				break;
 			}
 		}
@@ -1487,6 +1477,11 @@ void CBaseEntity::FireBullets(ULONG cShots, Vector vecSrc, Vector vecDirShooting
 
 				case BULLET_MONSTER_M249:		
 					pEntity->TraceAttack(pevAttacker, gSkillData.monDmgM249, vecDir, &tr, DMG_BULLET); 
+					DecalGunshot( &tr, iBulletType, vecSrc, vecEnd );
+				break;
+
+				case BULLET_MONSTER_762:		
+					pEntity->TraceAttack(pevAttacker, gSkillData.monDmgSniper, vecDir, &tr, DMG_BULLET); 
 					DecalGunshot( &tr, iBulletType, vecSrc, vecEnd );
 				break;
 
@@ -1587,6 +1582,10 @@ Vector CBaseEntity::FireBulletsPlayer ( ULONG cShots, Vector vecSrc, Vector vecD
 			
 				case BULLET_PLAYER_357:		
 					pEntity->TraceAttack(pevAttacker, gSkillData.plrDmg357, vecDir, &tr, DMG_BULLET); 
+				break;
+
+				case BULLET_PLAYER_762:		
+					pEntity->TraceAttack(pevAttacker, gSkillData.plrDmgSniper, vecDir, &tr, DMG_BULLET); 
 				break;
 				
 				case BULLET_NONE: // FIX 

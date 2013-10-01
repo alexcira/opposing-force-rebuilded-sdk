@@ -338,6 +338,9 @@
     <ClCompile Include="pipewrench.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sniperrifle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="activity.h">

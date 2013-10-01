@@ -392,6 +392,11 @@ cvar_t	sk_plr_556_bullet2 = {"sk_plr_556_bullet2","0"};
 cvar_t	sk_plr_556_bullet3 = {"sk_plr_556_bullet3","0"};
 
 // Desert Eagle
+cvar_t	sk_plr_762_bullet1 = {"sk_plr_762_bullet1","0"};
+cvar_t	sk_plr_762_bullet2 = {"sk_plr_762_bullet2","0"};
+cvar_t	sk_plr_762_bullet3 = {"sk_plr_762_bullet3","0"};
+
+// Desert Eagle
 cvar_t	sk_plr_eagle1 = {"sk_plr_eagle1","0"};
 cvar_t	sk_plr_eagle2 = {"sk_plr_eagle2","0"};
 cvar_t	sk_plr_eagle3 = {"sk_plr_eagle3","0"};
@@ -420,6 +425,10 @@ cvar_t	sk_buckshot3 = {"sk_buckshot3","0"};
 cvar_t	sk_556_bullet1 = {"sk_556_bullet1","0"};
 cvar_t	sk_556_bullet2 = {"sk_556_bullet2","0"};
 cvar_t	sk_556_bullet3 = {"sk_556_bullet3","0"};
+
+cvar_t	sk_762_bullet1 = {"sk_762_bullet1","0"};
+cvar_t	sk_762_bullet2 = {"sk_762_bullet2","0"};
+cvar_t	sk_762_bullet3 = {"sk_762_bullet3","0"};
 
 // HORNET
 cvar_t	sk_hornet_dmg1 = {"sk_hornet_dmg1","0"};
@@ -883,6 +892,11 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_plr_eagle2 );
 	CVAR_REGISTER ( &sk_plr_eagle3 );
 
+	// Sniper
+	CVAR_REGISTER ( &sk_plr_762_bullet1 );
+	CVAR_REGISTER ( &sk_plr_762_bullet2 );
+	CVAR_REGISTER ( &sk_plr_762_bullet3 );
+
 	// WORLD WEAPONS
 	CVAR_REGISTER ( &sk_12mm_bullet1 );
 	CVAR_REGISTER ( &sk_12mm_bullet2 );
@@ -907,6 +921,10 @@ void GameDLLInit( void )
 	CVAR_REGISTER ( &sk_556_bullet1 );
 	CVAR_REGISTER ( &sk_556_bullet2 );
 	CVAR_REGISTER ( &sk_556_bullet3 );
+
+	CVAR_REGISTER ( &sk_762_bullet1 );
+	CVAR_REGISTER ( &sk_762_bullet2 );
+	CVAR_REGISTER ( &sk_762_bullet3 );
 
 	// HORNET
 	CVAR_REGISTER ( &sk_hornet_dmg1 );

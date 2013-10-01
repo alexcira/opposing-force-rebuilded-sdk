@@ -289,6 +289,9 @@ void CGameRules::RefreshSkillData ( void )
 	// Desert Eagle
 	gSkillData.monDmgEagle = GetSkillCvar( "sk_plr_eagle");
 
+	// Sniper
+	gSkillData.plrDmgSniper = GetSkillCvar( "sk_plr_762_bullet");
+
 	// MONSTER WEAPONS
 	gSkillData.monDmg12MM = GetSkillCvar( "sk_12mm_bullet");
 	gSkillData.monDmgMP5 = GetSkillCvar ("sk_9mmAR_bullet" );
@@ -297,6 +300,7 @@ void CGameRules::RefreshSkillData ( void )
 	gSkillData.monDmgM249 = GetSkillCvar( "sk_556_bullet");
 	gSkillData.monDmgBuckshot = GetSkillCvar( "sk_buckshot");
 	gSkillData.monDmgEagle = GetSkillCvar( "sk_eagle_bullet");
+	gSkillData.monDmgSniper = GetSkillCvar( "sk_762_bullet");
 
 	// MONSTER HORNET
 	gSkillData.monDmgHornet = GetSkillCvar( "sk_hornet_dmg");

@@ -70,7 +70,7 @@ void EV_EgonStop( struct event_args_s *args  );
 void EV_HornetGunFire( struct event_args_s *args  );
 void EV_TripmineFire( struct event_args_s *args  );
 void EV_SnarkFire( struct event_args_s *args  );
-
+void EV_FireM40a1( struct event_args_s *args  );
 
 void EV_TrainPitchAdjust( struct event_args_s *args );
 }
@@ -87,6 +87,25 @@ void EV_TrainPitchAdjust( struct event_args_s *args );
 #define VECTOR_CONE_10DEGREES Vector( 0.08716, 0.08716, 0.08716 )
 #define VECTOR_CONE_15DEGREES Vector( 0.13053, 0.13053, 0.13053 )
 #define VECTOR_CONE_20DEGREES Vector( 0.17365, 0.17365, 0.17365 )
+
+/*
+=================
+EV_MuzzleFlash
+
+Flag weapon/view model for muzzle flash
+=================
+*/
+void EV_Dynamic_MuzzleFlash( vec3_t pos )
+{
+	int radius = gEngfuncs.pfnRandomLong( 260, 300 );
+	dlight_t *dl = gEngfuncs.pEfxAPI->CL_AllocDlight( 999 );
+	dl->die = gEngfuncs.GetClientTime();
+	dl->origin = pos;
+	dl->color.r = 255;
+	dl->color.g = 192;
+	dl->color.b = 28;
+	dl->radius = radius;
+}
 
 // play a strike sound based on the texture that was hit by the attack traceline.  VecSrc/VecEnd are the
 // original traceline endpoints used by the attacker, iBulletType is the type of bullet that hit the texture.
@@ -487,6 +506,7 @@ void EV_FireGlock1( event_args_t *args )
 	VectorCopy( forward, vecAiming );
 
 	EV_HLDM_FireBullets( idx, forward, right, up, 1, vecSrc, vecAiming, 8192, BULLET_PLAYER_9MM, 0, 0, args->fparam1, args->fparam2 );
+	EV_Dynamic_MuzzleFlash ( vecSrc );
 }
 
 void EV_FireGlock2( event_args_t *args )
@@ -532,7 +552,7 @@ void EV_FireGlock2( event_args_t *args )
 	VectorCopy( forward, vecAiming );
 
 	EV_HLDM_FireBullets( idx, forward, right, up, 1, vecSrc, vecAiming, 8192, BULLET_PLAYER_9MM, 0, &tracerCount[idx-1], args->fparam1, args->fparam2 );
-	
+	EV_Dynamic_MuzzleFlash ( vecSrc );
 }
 //======================
 //	   GLOCK END
@@ -585,6 +605,7 @@ void EV_FireShotGunDouble( event_args_t *args )
 
 	EV_GetGunPosition( args, vecSrc, origin );
 	VectorCopy( forward, vecAiming );
+	EV_Dynamic_MuzzleFlash ( vecSrc );
 
 	if ( gEngfuncs.GetMaxClients() > 1 )
 	{
@@ -637,6 +658,7 @@ void EV_FireShotGunSingle( event_args_t *args )
 
 	EV_GetGunPosition( args, vecSrc, origin );
 	VectorCopy( forward, vecAiming );
+	EV_Dynamic_MuzzleFlash ( vecSrc );
 
 	if ( gEngfuncs.GetMaxClients() > 1 )
 	{
@@ -687,8 +709,8 @@ void EV_FireMP5( event_args_t *args )
 	}
 
 	EV_GetDefaultShellInfo( args, origin, velocity, ShellVelocity, ShellOrigin, forward, right, up, 20, -12, 4 );
-
 	EV_EjectBrass ( ShellOrigin, ShellVelocity, angles[ YAW ], shell, TE_BOUNCE_SHELL ); 
+	EV_Dynamic_MuzzleFlash ( vecSrc );
 
 	switch( gEngfuncs.pfnRandomLong( 0, 1 ) )
 	{
@@ -792,6 +814,7 @@ void EV_FirePython( event_args_t *args )
 	VectorCopy( forward, vecAiming );
 
 	EV_HLDM_FireBullets( idx, forward, right, up, 1, vecSrc, vecAiming, 8192, BULLET_PLAYER_357, 0, 0, args->fparam1, args->fparam2 );
+	EV_Dynamic_MuzzleFlash ( vecSrc );
 }
 //======================
 //	    PHYTON END 
@@ -1719,6 +1742,48 @@ void EV_SnarkFire( event_args_t *args )
 }
 //======================
 //	   SQUEAK END
+//======================
+
+//======================
+//	    SNIPER START
+//======================
+void EV_FireM40a1( event_args_t *args )
+{
+	int idx;
+	vec3_t origin;
+	vec3_t angles;
+	vec3_t velocity;
+	int empty;
+
+	vec3_t vecSrc, vecAiming;
+	vec3_t up, right, forward;
+	
+	idx = args->entindex;
+	VectorCopy( args->origin, origin );
+	VectorCopy( args->angles, angles );
+	VectorCopy( args->velocity, velocity );
+
+	float flSpread = 0.001;
+
+	empty = args->bparam1;
+	AngleVectors( angles, forward, right, up );
+
+	if ( EV_IsLocal( idx ) )
+	{
+		gEngfuncs.pEventAPI->EV_WeaponAnimation( empty ? SNIPER_FIRELASTROUND : SNIPER_FIRE, 2 );
+		V_PunchAxis( 0, -2.0 );
+	}
+
+	gEngfuncs.pEventAPI->EV_PlaySound( idx, origin, CHAN_WEAPON, "weapons/sniper_fire.wav", gEngfuncs.pfnRandomFloat(0.92, 1.0), ATTN_NORM, 0, 98 + gEngfuncs.pfnRandomLong( 0, 3 ) );
+
+	EV_GetGunPosition( args, vecSrc, origin );
+	VectorCopy( forward, vecAiming );
+	EV_Dynamic_MuzzleFlash ( vecSrc );
+
+	EV_HLDM_FireBullets( idx, forward, right, up, 1, vecSrc, vecAiming, 8192, BULLET_PLAYER_762, 0, 0, flSpread, flSpread );
+}
+//======================
+//	   SNIPER END
 //======================
 
 void EV_TrainPitchAdjust( event_args_t *args )
